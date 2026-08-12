@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common SENSES — Live Sensor Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root { --red-dark:#8B0000; --red-light:#DC143C; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; font-family:'Segoe UI',Arial,sans-serif; background:#111; color:#fff; }
+  #app { display:flex; flex-direction:column; height:100vh; }
+
+  #header {
+    background:#111; height:52px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 20px; border-bottom:2px solid var(--red-dark);
+  }
+  .logo { display:flex; align-items:center; gap:12px; }
+  .logo-box { background:var(--red-dark); color:#fff; font-size:9px; font-weight:700; padding:5px 8px; line-height:1.4; text-align:center; text-transform:uppercase; border-radius:3px; }
+  #header h1 { font-size:15px; font-weight:500; color:#ddd; }
+  #header h1 em { color:var(--red-light); font-style:normal; }
+  #status-pill { font-size:11px; background:rgba(220,20,60,0.12); color:#ff9999; border:1px solid rgba(220,20,60,0.25); padding:4px 12px; border-radius:20px; }
+
+  #tab-bar { background:#0a0a0a; height:42px; flex-shrink:0; display:flex; align-items:center; padding:0 20px; gap:2px; border-bottom:1px solid #222; }
+  .tab-btn { font-size:13px; font-weight:500; padding:7px 18px; border:none; background:transparent; color:#666; cursor:pointer; border-bottom:3px solid transparent; transition:all 0.12s; }
+  .tab-btn.active { color:#fff; border-bottom-color:var(--red-light); }
+  .tab-btn:hover:not(.active) { color:#bbb; }
+
+  #main { display:flex; flex:1; overflow:hidden; min-height:0; }
+  #map { flex:1; min-width:0; }
+
+  #sidebar { width:280px; flex-shrink:0; background:#111; border-left:1px solid #222; display:flex; flex-direction:column; overflow:hidden; }
+  .s-title { padding:10px 16px; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#444; border-bottom:1px solid #1a1a1a; }
+  #legend { padding:8px 14px; border-bottom:1px solid #1a1a1a; flex-shrink:0; }
+  .leg-item { display:flex; align-items:center; gap:8px; padding:5px 0; font-size:12px; color:#888; border-bottom:1px solid #161616; }
+  .leg-swatch { width:18px; height:18px; border-radius:3px; flex-shrink:0; border:1.5px solid; }
+  .leg-range { margin-left:auto; font-size:10px; color:#444; white-space:nowrap; }
+  #sensor-info { flex:1; overflow-y:auto; padding:14px 16px; }
+  #sensor-placeholder { color:#333; font-size:13px; text-align:center; margin-top:40px; line-height:1.8; }
+  #sensor-detail { display:none; }
+  .s-name { font-size:14px; font-weight:600; color:#fff; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #1e1e1e; line-height:1.4; }
+  .m-row { display:flex; justify-content:space-between; align-items:baseline; padding:8px 0; border-bottom:1px solid #1a1a1a; font-size:13px; }
+  .m-row .lbl { color:#555; }
+  .m-row .val { font-weight:600; color:#fff; font-size:15px; }
+  .badge { display:inline-block; margin-top:14px; padding:7px 16px; border-radius:6px; font-size:12px; font-weight:700; border:1.5px solid; }
+
+  #legend-bar { background:#0a0a0a; border-top:1px solid #222; padding:7px 16px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; flex-shrink:0; }
+  .lb-label { font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:#444; margin-right:4px; }
+  .lb-item { display:flex; align-items:center; gap:4px; font-size:11px; color:#666; }
+  .lb-swatch { width:11px; height:11px; border-radius:2px; border:1px solid; flex-shrink:0; }
+
+  #overlay { position:fixed; inset:0; background:rgba(5,5,5,0.96); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; }
+  #overlay h2 { font-size:20px; font-weight:300; letter-spacing:3px; text-transform:uppercase; }
+  #overlay h2 em { color:var(--red-light); font-style:normal; }
+  #load-msg { font-size:12px; color:#444; margin-top:14px; }
+  .spin { width:28px; height:28px; border:2px solid #222; border-top-color:var(--red-light); border-radius:50%; animation:sp 0.7s linear infinite; margin-bottom:16px; }
+  @keyframes sp { to { transform:rotate(360deg); } }
+
+  .leaflet-container { background:#aad3df !important; }
+  .leaflet-popup-content-wrapper { background:#161616; color:#fff; border:1px solid #2a2a2a; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.8); }
+  .leaflet-popup-tip { background:#161616; }
+  .leaflet-popup-content { margin:0; min-width:200px; font-family:'Segoe UI',Arial,sans-serif; }
+  .pu { padding:12px 14px; }
+  .pu-addr { font-size:13px; font-weight:700; color:#fff; border-bottom:1px solid #2a2a2a; padding-bottom:8px; margin-bottom:8px; line-height:1.4; }
+  .pu-row { display:flex; justify-content:space-between; font-size:12px; color:#777; padding:3px 0; }
+  .pu-row b { color:#fff; }
+  .pu-badge { margin-top:8px; display:inline-block; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700; border:1px solid; }
+</style>
+</head>
+<body>
+
+<div id="overlay">
+  <div class="spin"></div>
+  <h2>Common <em>SENSES</em></h2>
+  <p id="load-msg">Connecting to sensor network...</p>
+</div>
+
+<div id="app">
+  <div id="header">
+    <div class="logo">
+      <div class="logo-box">COMMON<br>SENSES</div>
+      <h1>Live Sensor Map &mdash; <em>Blue Hill Ave, Boston</em></h1>
+    </div>
+    <div id="status-pill">Loading...</div>
+  </div>
+  <div id="tab-bar">
+    <button class="tab-btn active" data-metric="heat_index">Heat Index</button>
+    <button class="tab-btn" data-metric="temperature">Temperature</button>
+    <button class="tab-btn" data-metric="humidity">Humidity</button>
+  </div>
+  <div id="main">
+    <div id="map"></div>
+    <div id="sidebar">
+      <div class="s-title">Classification Guide</div>
+      <div id="legend"></div>
+      <div class="s-title">Sensor Detail</div>
+      <div id="sensor-info">
+        <div id="sensor-placeholder">Click any sensor dot<br>to see live readings</div>
+        <div id="sensor-detail"></div>
+      </div>
+    </div>
+  </div>
+  <div id="legend-bar"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const API = "https://sensordata-func-api-prd-ue2-01-d4hrdscjdcaxhugc.eastus2-01.azurewebsites.net/api";
+
+// ── EXACT SCALES FROM PRESENTATION ───────────────────────────────────────────
+const HI_SCALE = [
+  { label:"No Heat Classification", range:"Below 80°F",  max:80,   fill:"#B8E0F7", stroke:"#2471A3", text:"#1a5276" },
+  { label:"Caution",                range:"80–90°F",     max:90,   fill:"#F9F2A0", stroke:"#D4AC0D", text:"#7D6608" },
+  { label:"Extreme Caution",        range:"91–103°F",    max:103,  fill:"#D4A017", stroke:"#B7770D", text:"#fff" },
+  { label:"Danger",                 range:"103–124°F",   max:124,  fill:"#C0562B", stroke:"#922B21", text:"#fff" },
+  { label:"Extreme Danger",         range:"Above 125°F", max:9999, fill:"#8B1A1A", stroke:"#5B0E0E", text:"#fff" },
+];
+const TEMP_SCALE = [
+  { label:"Freezing",    range:"Below 32°F", max:32,   fill:"#cce5ff", stroke:"#004085", text:"#00264d" },
+  { label:"Very Cold",   range:"32–45°F",    max:45,   fill:"#90caf9", stroke:"#1565c0", text:"#0a2e6e" },
+  { label:"Cold",        range:"45–55°F",    max:55,   fill:"#64b5f6", stroke:"#1565c0", text:"#0a2e6e" },
+  { label:"Cool",        range:"55–65°F",    max:65,   fill:"#a5d6a7", stroke:"#2e7d32", text:"#1b5e20" },
+  { label:"Comfortable", range:"65–80°F",    max:80,   fill:"#dcedc8", stroke:"#558b2f", text:"#33691e" },
+  { label:"Warm",        range:"80–90°F",    max:90,   fill:"#F9F2A0", stroke:"#D4AC0D", text:"#7D6608" },
+  { label:"Hot",         range:"90°F+",      max:9999, fill:"#C0562B", stroke:"#922B21", text:"#fff" },
+];
+const HUM_SCALE = [
+  { label:"Very Dry",    range:"Below 20%", max:20,   fill:"#fff3e0", stroke:"#e65100", text:"#bf360c" },
+  { label:"Dry",         range:"20–40%",    max:40,   fill:"#ffe0b2", stroke:"#f57c00", text:"#e65100" },
+  { label:"Comfortable", range:"40–60%",    max:60,   fill:"#c8e6c9", stroke:"#2e7d32", text:"#1b5e20" },
+  { label:"Humid",       range:"60–75%",    max:75,   fill:"#66bb6a", stroke:"#1b5e20", text:"#fff" },
+  { label:"Very Humid",  range:"75%+",      max:9999, fill:"#2e7d32", stroke:"#1b5e20", text:"#fff" },
+];
+const METRICS = {
+  heat_index:  { label:"Heat Index (°F)", unit:"°F", scale:HI_SCALE,   apiMetric:"heat_index"  },
+  temperature: { label:"Temperature",     unit:"°F", scale:TEMP_SCALE, apiMetric:"temperature" },
+  humidity:    { label:"Humidity",        unit:"%",  scale:HUM_SCALE,  apiMetric:"humidity"    },
+};
+function classify(val, scale) {
+  for (const c of scale) if (val < c.max) return c;
+  return scale[scale.length-1];
+}
+
+// ── SENSOR COORDINATES ────────────────────────────────────────────────────────
+const COORDS = {
+  1:[42.3205,-71.0837],  2:[42.3178,-71.0832],  3:[42.3220,-71.0820],
+  4:[42.3190,-71.0795],  5:[42.3245,-71.0870],  6:[42.3260,-71.0860],
+  7:[42.3310,-71.0810],  8:[42.3150,-71.0900],  9:[42.3095,-71.0755],
+  10:[42.3165,-71.0895], 11:[42.3228,-71.0768], 12:[42.3138,-71.0840],
+  13:[42.3115,-71.0845], 15:[42.3248,-71.0810], 16:[42.3282,-71.0835],
+  17:[42.3295,-71.0850], 18:[42.3270,-71.0870], 19:[42.3105,-71.0855],
+  20:[42.3300,-71.0840], 21:[42.3068,-71.0795], 22:[42.3315,-71.0820],
+  23:[42.3290,-71.0828], 24:[42.3122,-71.0780], 25:[42.3048,-71.0812],
+  27:[42.3238,-71.0852], 28:[42.3215,-71.0843], 29:[42.3302,-71.0875],
+  30:[42.3230,-71.0840], 31:[42.3258,-71.0830], 32:[42.3270,-71.0862],
+  33:[42.3325,-71.0805], 34:[42.3285,-71.0815], 35:[42.3278,-71.0820],
+  36:[42.3292,-71.0842], 37:[42.3232,-71.0822], 38:[42.3265,-71.0875],
+  39:[42.3222,-71.0832], 40:[42.3242,-71.0818], 41:[42.3318,-71.0798],
+  43:[42.3208,-71.0848], 44:[42.3035,-71.0820], 45:[42.3255,-71.0865],
+  46:[42.3268,-71.0878], 47:[42.3272,-71.0858], 48:[42.3112,-71.0862],
+  50:[42.3275,-71.0845], 51:[42.3248,-71.0868], 52:[42.3320,-71.0788],
+  53:[42.3132,-71.0810], 55:[42.3252,-71.0880], 56:[42.3038,-71.0830],
+};
+
+// ── MAP SETUP ─────────────────────────────────────────────────────────────────
+const map = L.map("map").setView([42.312,-71.079], 13);
+
+// Custom panes so dots always sit above zones
+map.createPane("zones"); map.getPane("zones").style.zIndex = 350; map.getPane("zones").style.pointerEvents = "none";
+map.createPane("dots");  map.getPane("dots").style.zIndex  = 450;
+
+// Google Maps hybrid tiles — load reliably from local file
+L.tileLayer("https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+  attribution: "&copy; Google Maps",
+  subdomains: ["0","1","2","3"],
+  maxZoom: 20,
+}).addTo(map);
+
+let zoneLayer = L.layerGroup().addTo(map);
+let dotLayer  = L.layerGroup().addTo(map);
+let sensorList = [];
+let currentMetric = "heat_index";
+let demoMode = false;
+
+const DEMO_VALUES = {
+  heat_index:  { base:86, spread:9 },
+  temperature: { base:81, spread:8 },
+  humidity:    { base:58, spread:16 },
+};
+
+function demoValue(id, metricKey) {
+  const cfg = DEMO_VALUES[metricKey];
+  const offset = ((id * 17) % (cfg.spread * 2 + 1)) - cfg.spread;
+  return cfg.base + offset * 0.55;
+}
+
+function demoSensors() {
+  return Object.keys(COORDS).map(id => ({
+    location_id: +id,
+    location_address: `Blue Hill Ave corridor · sensor #${id}`
+  }));
+}
+
+// ── ZONE CIRCLES: one clean circle per sensor ────────────────────────────────
+function drawZones(sensors) {
+  zoneLayer.clearLayers();
+  sensors.forEach(s => {
+    L.circle([s.lat, s.lng], {
+      radius: 80,
+      fillColor: s.cls.fill,
+      fillOpacity: 0.25,
+      color: s.cls.stroke,
+      weight: 1,
+      opacity: 0.4,
+      pane: "zones",
+      interactive: false,
+    }).addTo(zoneLayer);
+  });
+}
+
+// ── LEGEND ────────────────────────────────────────────────────────────────────
+function buildLegend(scale, label) {
+  document.getElementById("legend").innerHTML = scale.map(c => `
+    <div class="leg-item">
+      <div class="leg-swatch" style="background:${c.fill};border-color:${c.stroke}"></div>
+      <span>${c.label}</span>
+      <span class="leg-range">${c.range}</span>
+    </div>`).join("");
+  document.getElementById("legend-bar").innerHTML =
+    `<span class="lb-label">${label}</span>` +
+    scale.map(c => `
+      <div class="lb-item">
+        <div class="lb-swatch" style="background:${c.fill};border-color:${c.stroke}"></div>
+        ${c.label}
+      </div>`).join("");
+}
+
+// ── SENSOR DETAIL ─────────────────────────────────────────────────────────────
+function showDetail(sensor, val, cls, ts) {
+  document.getElementById("sensor-placeholder").style.display = "none";
+  const el = document.getElementById("sensor-detail");
+  el.style.display = "block";
+  const cfg = METRICS[currentMetric];
+  const t = ts ? new Date(ts).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}) : "—";
+  el.innerHTML = `
+    <div class="s-name">${sensor.location_address}</div>
+    <div class="m-row"><span class="lbl">${cfg.label}</span><span class="val">${val.toFixed(1)}${cfg.unit}</span></div>
+    <div class="m-row"><span class="lbl">Last reading</span><span class="val">${t}</span></div>
+    <div class="m-row"><span class="lbl">Sensor ID</span><span class="val">#${sensor.location_id}</span></div>
+    <span class="badge" style="background:${cls.fill};color:${cls.text};border-color:${cls.stroke}">${cls.label}</span>`;
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function renderAll(sensors, readings, metricKey, statusText) {
+  zoneLayer.clearLayers();
+  dotLayer.clearLayers();
+
+  const cfg = METRICS[metricKey];
+  const active = [];
+  let count = 0;
+
+  sensors.forEach((sensor, i) => {
+    const coords = COORDS[sensor.location_id];
+    if (!coords) return;
+    const res = readings[i];
+    if (!res || res.status !== "fulfilled") return;
+    const data = res.value;
+    if (!data.readings || !data.readings.length) return;
+
+    const latest = data.readings[data.readings.length - 1];
+    // Pull value — API key matches the metric name exactly
+    const val = latest[cfg.apiMetric];
+    if (val == null || isNaN(+val)) return;
+
+    const cls = classify(+val, cfg.scale);
+    active.push({ lat:coords[0], lng:coords[1], val:+val, cls, sensor, ts:latest.timestamp });
+    count++;
+  });
+
+  // Draw Voronoi color fill
+  drawZones(active);
+
+  // Draw dots on top
+  active.forEach(s => {
+    const dot = L.circleMarker([s.lat, s.lng], {
+      radius: 7,
+      fillColor: s.cls.fill,   // fill = classification color
+      fillOpacity: 1,
+      color: s.cls.stroke,      // border = darker shade of same
+      weight: 2.5,
+      pane: "dots",
+    }).addTo(dotLayer);
+
+    dot.on("click", () => showDetail(s.sensor, s.val, s.cls, s.ts));
+    dot.bindTooltip(
+      `<b>${s.sensor.location_address}</b><br>${s.val.toFixed(1)}${cfg.unit} — ${s.cls.label}`,
+      { direction:"top", offset:[0,-12] }
+    );
+    const t = s.ts ? new Date(s.ts).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}) : "";
+    dot.bindPopup(`
+      <div class="pu">
+        <div class="pu-addr">${s.sensor.location_address}</div>
+        <div class="pu-row"><span>${cfg.label}</span><b>${s.val.toFixed(1)}${cfg.unit}</b></div>
+        ${t?`<div class="pu-row"><span>Reading time</span><b>${t}</b></div>`:""}
+        <span class="pu-badge" style="background:${s.cls.fill};color:${s.cls.text};border-color:${s.cls.stroke}">${s.cls.label}</span>
+      </div>`, {maxWidth:240});
+  });
+
+  document.getElementById("status-pill").textContent = statusText ||
+    `${count} sensors live · ${new Date().toLocaleTimeString()}`;
+  return count;
+}
+
+function renderDemo(metricKey) {
+  demoMode = true;
+  const sensors = demoSensors();
+  const cfg = METRICS[metricKey];
+  const readings = sensors.map(sensor => {
+    const val = demoValue(sensor.location_id, metricKey);
+    return {
+      status: "fulfilled",
+      value: { readings: [{ [cfg.apiMetric]: val, timestamp: null }] }
+    };
+  });
+  buildLegend(cfg.scale, cfg.label);
+  renderAll(sensors, readings, metricKey, "Demo snapshot · live feed unavailable");
+}
+
+// ── FETCH ─────────────────────────────────────────────────────────────────────
+async function loadMetric(metricKey) {
+  const cfg = METRICS[metricKey];
+  buildLegend(cfg.scale, cfg.label);
+  zoneLayer.clearLayers();
+  dotLayer.clearLayers();
+  document.getElementById("status-pill").textContent = "Updating...";
+
+  if (demoMode) {
+    renderDemo(metricKey);
+    return;
+  }
+
+  const today = new Date();
+  const end   = today.toISOString().slice(0,10);
+  const start = new Date(+today - 86400000).toISOString().slice(0,10);
+
+  const readings = await Promise.allSettled(
+    sensorList.map(s =>
+      fetch(`${API}/readings?location_id=${s.location_id}&metric=${cfg.apiMetric}&start_date=${start}&end_date=${end}&aggregation=1min`)
+        .then(r => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          return r.json();
+        })
+    )
+  );
+  const count = renderAll(sensorList, readings, metricKey);
+  if (!count) renderDemo(metricKey);
+}
+
+async function init() {
+  const msg = document.getElementById("load-msg");
+  try {
+    msg.textContent = "Fetching sensor locations...";
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 7000);
+    let res;
+    try {
+      res = await fetch(`${API}/sensors-list`, { signal: controller.signal });
+    } finally {
+      clearTimeout(timer);
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const { sensors } = await res.json();
+    if (!Array.isArray(sensors) || !sensors.length) throw new Error("No live sensors returned");
+    sensorList = sensors;
+    msg.textContent = `Loading readings for ${sensors.length} sensors...`;
+    buildLegend(HI_SCALE, "Heat Index (°F)");
+    await loadMetric("heat_index");
+  } catch(e) {
+    msg.textContent = "Live feed unavailable — opening demo snapshot...";
+    renderDemo("heat_index");
+  } finally {
+    setTimeout(() => {
+      document.getElementById("overlay").style.display = "none";
+    }, 350);
+  }
+}
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.dataset.metric === currentMetric) return;
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentMetric = btn.dataset.metric;
+    document.getElementById("sensor-placeholder").style.display = "block";
+    document.getElementById("sensor-detail").style.display = "none";
+    loadMetric(currentMetric);
+  });
+});
+
+init();
+</script>
+</body>
+</html>
