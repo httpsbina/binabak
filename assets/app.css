@@ -77,7 +77,7 @@ button svg {
   display: none !important;
 }
 .desktop {
-  max-width: 1440px;
+  max-width: 1800px;
   margin: auto;
   min-height: 100dvh;
   padding: 38px 48px 24px;
@@ -99,9 +99,6 @@ button svg {
 #main-content {
   min-width: 0;
   outline: none;
-}
-#main-content.view-enter {
-  animation: window-in 0.42s both;
 }
 .loading,
 .noscript {
@@ -139,17 +136,12 @@ button svg {
   width: 64px;
   height: 64px;
   object-fit: contain;
-  transition: transform 0.2s;
-}
-.dock a:hover img,
-.dock a:focus-visible img {
-  transform: translateY(-6px);
 }
 .dock [aria-current="page"] {
   font-weight: 600;
 }
 .app-window {
-  height: min(980px, calc(100dvh - 210px));
+  height: calc(100dvh - 210px);
   min-height: 720px;
   overflow: hidden;
   background: var(--white);
@@ -291,8 +283,8 @@ button svg {
   border-right: 1px solid var(--line);
 }
 .hero {
-  min-height: 650px;
-  height: min(810px, calc(100dvh - 210px));
+  min-height: 720px;
+  height: calc(100dvh - 210px);
   position: relative;
   display: grid;
   place-items: center;
@@ -672,7 +664,6 @@ button svg {
 }
 .calendar-event:hover {
   filter: brightness(0.97);
-  transform: translateY(-2px);
 }
 .calendar-event.filtered-out {
   opacity: 0.2;
@@ -992,7 +983,7 @@ button svg {
   font-size: 12px;
   color: var(--wine);
   margin-top: 12px;
-  min-height: 16px;
+  min-height: 36px;
 }
 .mail-shell {
   display: grid;
@@ -1369,7 +1360,6 @@ dialog::backdrop {
   backdrop-filter: blur(8px);
 }
 dialog[open] {
-  animation: dialog-in 0.2s ease-out;
 }
 .project-dialog {
   width: 1120px;
@@ -1557,81 +1547,12 @@ dialog[open] {
   max-height: none;
   pointer-events: none;
 }
-.celebration {
-  text-align: center;
-  border-radius: 22px;
-  padding: 40px;
-  background: var(--paper);
-  width: 380px;
-}
-.celebration h2 {
-  font-size: 28px;
-  margin-bottom: 12px;
-}
-.celebration p {
-  font-size: 15px;
-  margin-bottom: 24px;
-}
-.celebration-heart {
-  font-size: 45px;
-  color: var(--wine);
-  display: block;
-  margin-bottom: 16px;
-}
-#confetti {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-}
-.confetti-bit {
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  width: 9px;
-  height: 15px;
-  background: var(--color);
-  animation: confetti 1.6s cubic-bezier(0.1, 0.5, 0.3, 1) both;
-}
-@keyframes window-in {
-  0% {
-    opacity: 0;
-    transform: translateY(18px) scale(0.988);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(-2px) scale(1.002);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes dialog-in {
-  from {
-    opacity: 0;
-    transform: translateY(9px) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes confetti {
-  to {
-    transform: translate(var(--x), var(--y)) rotate(var(--rotate));
-    opacity: 0;
-  }
-}
 @media (min-width: 1600px) {
   .desktop {
     padding-top: 48px;
   }
   .hero h1 {
     font-size: 76px;
-  }
-  .hero {
-    height: 810px;
   }
   .hero-portrait .portrait {
     height: 360px;
@@ -1643,7 +1564,7 @@ dialog[open] {
     gap: 24px;
   }
   .app-window {
-    min-height: 700px;
+    min-height: 720px;
   }
   .calendar-shell {
     grid-template-columns: 205px minmax(0, 1fr);
@@ -2285,9 +2206,6 @@ dialog[open] {
   }
   .media-stage {
     height: 75dvh;
-  }
-  .celebration {
-    padding: 32px 22px;
   }
 }
 @media (min-width: 801px) {

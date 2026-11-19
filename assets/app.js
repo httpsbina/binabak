@@ -2,7 +2,6 @@ const main = document.querySelector("#main-content");
 const dock = document.querySelector("#dock");
 const projectDialog = document.querySelector("#project-dialog");
 const mediaDialog = document.querySelector("#media-dialog");
-const celebration = document.querySelector("#celebration");
 const EMAIL = "bakhramova.b@northeastern.edu";
 const PDF = "assets/resume/Binafsha_Bakhramova_Resume.pdf";
 const LINKEDIN = "https://www.linkedin.com/in/binafsha-bakhramova/";
@@ -536,30 +535,12 @@ function checkSudoku(showErrors = false) {
         ? "Looking good so far."
         : "";
   }
-  if (!solved && sudoku.every((v, i) => v === solution[i])) {
-    solved = true;
-    celebration.showModal();
-    confetti();
-  }
+  solved = sudoku.every((v, i) => v === solution[i]);
+  if (solved)
+    main.querySelector(".sudoku-status").textContent = "Puzzle complete.";
 }
-function confetti() {
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const holder = document.querySelector("#confetti"),
-    colors = ["#803d48", "#d4bf85", "#9ea89b", "#d9b7b0", "#f4f0e6"];
-  holder.replaceChildren();
-  for (let i = 0; i < 45; i++) {
-    const bit = document.createElement("span");
-    bit.className = "confetti-bit";
-    bit.style.setProperty("--x", `${(Math.random() - 0.5) * 800}px`);
-    bit.style.setProperty("--y", `${200 + Math.random() * 400}px`);
-    bit.style.setProperty("--rotate", `${Math.random() * 720}deg`);
-    bit.style.setProperty("--color", colors[i % colors.length]);
-    bit.style.animationDelay = Math.random() * 0.15 + "s";
-    holder.append(bit);
-  }
-  setTimeout(() => holder.replaceChildren(), 2100);
-}
-function renderRoute(animate = true) {
+function renderRoute() {
+  const previousApp = current.app;
   const parts = location.hash.slice(1).split("/");
   const allowed = new Set(apps.map((a) => a[0]));
   current = {
@@ -573,18 +554,14 @@ function renderRoute(animate = true) {
     current.app === "home"
       ? "Binafsha Bakhramova"
       : apps.find((a) => a[0] === current.app)[1] + " / Binafsha Bakhramova";
-  if (animate) {
-    main.classList.remove("view-enter");
-    void main.offsetWidth;
-    main.classList.add("view-enter");
-  }
-  window.scrollTo({ top: 0 });
+  if (current.app !== previousApp)
+    window.scrollTo({ top: 0, behavior: "instant" });
   if (current.app === "calendar" && data.projects[current.section])
     openProject(current.section);
 }
 function route(app, section = "") {
   const hash = "#" + app + (section ? "/" + section : "");
-  if (location.hash === hash) renderRoute(false);
+  if (location.hash === hash) renderRoute();
   else location.hash = hash;
 }
 
@@ -672,7 +649,11 @@ document.addEventListener("click", (event) => {
       sudoku = [...initialSudoku];
       selectedCell = -1;
       solved = false;
-      main.innerHTML = about();
+      main.querySelectorAll("[data-cell]").forEach((cell, i) => {
+        cell.value = sudoku[i] || "";
+        cell.classList.remove("invalid");
+      });
+      main.querySelector(".sudoku-status").textContent = "";
       break;
     case "hint-sudoku": {
       let i = selectedCell;
@@ -683,7 +664,6 @@ document.addEventListener("click", (event) => {
         const cell = main.querySelector(`[data-cell="${i}"]`);
         cell.value = sudoku[i];
         cell.classList.remove("invalid");
-        cell.focus();
         checkSudoku();
       }
       break;
@@ -782,7 +762,7 @@ document.addEventListener("keydown", (e) => {
     zoomMedia("out");
   }
 });
-for (const dialog of [projectDialog, mediaDialog, celebration])
+for (const dialog of [projectDialog, mediaDialog])
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog) dialog.close();
   });
