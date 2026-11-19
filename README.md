@@ -17,7 +17,7 @@ Open <http://127.0.0.1:4173>. No build step, API keys or backend are needed. Ser
 - `assets/resume/Binafsha_Bakhramova_Resume.pdf` is the downloadable résumé.
 - `assets/ui/` holds the original dock icons, stationery and interface icons.
 - `assets/app.js` handles hash navigation, project dialogs, photo viewing, mail search, contextual replies and Sudoku.
-- `assets/app.css` holds the palette, typography, responsive layouts and steady navigation without page zoom or fade effects.
+- `assets/app.css` holds the palette, typography, responsive layouts and steady frames with a brief content entrance and gentle dock hover, without page zoom or fade effects.
 
 The portfolio emails are curated project conversations. Reply opens the visitor’s email app addressed to Binafsha with the selected subject; the website does not send email or connect to a private inbox. Maps and plots are public local attachments and open without Slack access. GitHub attachments open the actual project or pull request.
 
@@ -34,7 +34,7 @@ Interaction checks covered the actual PDF download; every contextual email reply
 
 ## Visual review
 
-The existing paper, Polaroid, scrapbook and Apple Photos references remain the aesthetic source: espresso grid, cream paper, oxblood accents, original typefaces and the user’s actual photographs. The review preserves those choices and adds no new decorative stickers or page motion.
+The existing paper, Polaroid, scrapbook and Apple Photos references remain the aesthetic source: espresso grid, cream paper, oxblood accents, original typefaces and the user’s actual photographs. The review preserves those choices and adds no new decorative stickers. Page changes use a short 6px content entrance, while window frames stay still. Hint and Reset do not animate. Reduced motion disables the entrance and hover movement.
 
 - [Poolsuite](https://poolsuite.net/) was inspected for bounded desktop windows and persistent navigation.
 - [Jessica Hische’s portfolio](https://jessicahische.is/) was inspected for clear artwork groupings and restrained interface typography.

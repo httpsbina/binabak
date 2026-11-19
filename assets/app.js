@@ -548,6 +548,7 @@ function checkSudoku(showErrors = false) {
     main.querySelector(".sudoku-status").textContent = "Puzzle complete.";
 }
 function renderRoute() {
+  main.classList.remove("page-enter");
   const previousApp = current.app;
   const horizontalNavigation = main.querySelector(
     ".mail-messages, .notes-list, .photos-sidebar",
@@ -584,11 +585,17 @@ function renderRoute() {
     current.app === "home"
       ? "Binafsha Bakhramova"
       : apps.find((a) => a[0] === current.app)[1] + " / Binafsha Bakhramova";
-  if (current.app !== previousApp)
+  if (current.app !== previousApp) {
+    main.classList.add("page-enter");
     window.scrollTo({ top: 0, behavior: "instant" });
+  }
   if (current.app === "calendar" && data.projects[current.section])
     openProject(current.section);
 }
+main.addEventListener("animationend", (event) => {
+  if (event.animationName === "content-settle")
+    main.classList.remove("page-enter");
+});
 function route(app, section = "") {
   const hash = "#" + app + (section ? "/" + section : "");
   if (location.hash === hash) renderRoute();

@@ -1,7 +1,7 @@
 # Tech stack
 
 - HTML5 with native dialogs and semantic navigation
-- CSS grid/flex layouts, responsive views, motion-free page navigation and reduced motion support
+- CSS grid/flex layouts, responsive views, steady page frames, short content entrances and reduced motion support
 - Vanilla JavaScript modules and hash routing
 - JSON content and photo manifests
 - Original local photos, maps, plots, dock icons and stationery assets
