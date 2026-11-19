@@ -1,24 +1,12 @@
-# Tech Stack
+# Tech stack
 
-## Core
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Responsive CSS with viewport-aware sizing and mobile layouts
+- HTML5 with native dialogs and semantic navigation
+- CSS grid/flex layouts, responsive views, CSS transitions and reduced motion support
+- Vanilla JavaScript modules and hash routing
+- JSON content and photo manifests
+- Original local photos, maps, plots, dock icons and stationery assets
+- Google Fonts: Bowlby One SC, DM Serif Display, IBM Plex Mono, Inter and Nothing You Could Do
+- Native `mailto:` replies and downloadable PDF résumé
+- GitHub Pages static hosting, no build pipeline or backend
 
-## Interactive details
-- Web Audio API for camera/phone/printer sound effects
-- Native browser audio for the recorded voicemail
-- Hash-based client-side view routing for the corkboard, sections, and project screens
-- CSS animations/transitions for camera flash, photostrip zooms, printer motion, phone ringing, and UI transitions
-
-## Embedded experiences
-- Spotify embedded playlist/player in the About desktop
-- Leaflet.js in the standalone Common SENSES interactive map
-- Google Fonts: Figtree, Newsreader, Space Mono, and Caveat
-
-## Hosting
-- Static hosting via GitHub Pages
-- No framework
-- No build pipeline
-- No backend required for the main portfolio
+The standalone Common SENSES interactive map uses Leaflet. The primary app’s image viewer serves the detailed map locally, with fit, zoom and pan controls.

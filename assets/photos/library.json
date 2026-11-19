@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "photos": [
+    {
+      "id": "photo-16",
+      "src": "assets/photos/photo-16-lighthouse.jpg",
+      "width": 3455,
+      "height": 4607,
+      "alt": "A white lighthouse and red-roofed buildings beside the ocean beneath a blue sky."
+    },
+    {
+      "id": "photo-15",
+      "src": "assets/photos/photo-15-coastal-overlook.jpg",
+      "width": 1206,
+      "height": 1431,
+      "alt": "Weathered viewing lights above coastal rocks, with a boat on the water."
+    },
+    {
+      "id": "photo-14",
+      "src": "assets/photos/photo-14-rocky-shore.jpg",
+      "width": 1206,
+      "height": 878,
+      "alt": "A boat passing a rocky shoreline beside the blue ocean."
+    },
+    {
+      "id": "photo-06",
+      "src": "assets/photos/photo-06-harbor-dusk.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "Tall ship masts and a waterfront structure at dusk."
+    },
+    {
+      "id": "photo-11",
+      "src": "assets/photos/photo-11-campus-light.jpg",
+      "width": 1206,
+      "height": 1474,
+      "alt": "Trees and a brick campus building in warm evening light."
+    },
+    {
+      "id": "photo-13",
+      "src": "assets/photos/photo-13-riverside-train.jpg",
+      "width": 1206,
+      "height": 1573,
+      "alt": "A green Riverside train approaching on curving tracks through trees."
+    },
+    {
+      "id": "photo-05",
+      "src": "assets/photos/photo-05-after-rain.jpg",
+      "width": 1350,
+      "height": 1800,
+      "alt": "A green-roofed stone tower rising above dense trees under an overcast sky."
+    },
+    {
+      "id": "photo-07",
+      "src": "assets/photos/photo-07-city-through-leaves.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "A city skyline framed by leafy branches and a garden foreground."
+    },
+    {
+      "id": "photo-01",
+      "src": "assets/photos/photo-01-side-street.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "Pedestrians on a narrow cobblestone street lined with old buildings and pub signs."
+    },
+    {
+      "id": "photo-02",
+      "src": "assets/photos/photo-02-through-the-branches.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "An ornate pale tower seen through leafy branches between city buildings."
+    },
+    {
+      "id": "photo-04",
+      "src": "assets/photos/photo-04-late-sun.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "A historic street in late-day light, with a cathedral tower in the distance."
+    },
+    {
+      "id": "photo-10",
+      "src": "assets/photos/photo-10-garden-cafe.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "A sunlit garden cafe with wooden benches, tables, flowers, and people."
+    },
+    {
+      "id": "photo-12",
+      "src": "assets/photos/photo-12-bouquet.jpg",
+      "width": 1206,
+      "height": 1570,
+      "alt": "Pink lilies and mixed flowers wrapped in brown paper."
+    },
+    {
+      "id": "photo-03",
+      "src": "assets/photos/photo-03-canal-shade.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "A white swan in the shade beside a canal and a sunlit brick building."
+    },
+    {
+      "id": "photo-08",
+      "src": "assets/photos/photo-08-garden-afternoon.jpg",
+      "width": 1350,
+      "height": 1800,
+      "alt": "People sitting beside a pond and footbridge in a leafy city garden."
+    },
+    {
+      "id": "photo-09",
+      "src": "assets/photos/photo-09-aquarium-light.jpg",
+      "width": 1349,
+      "height": 1800,
+      "alt": "Penguins on warm-lit rocks above turquoise aquarium water."
+    }
+  ],
+  "albums": [
+    {
+      "id": "coast",
+      "title": "Travel",
+      "photoIds": ["photo-16", "photo-15", "photo-14", "photo-06"],
+      "coverId": "photo-16"
+    },
+    {
+      "id": "city-walks",
+      "title": "City",
+      "photoIds": [
+        "photo-11",
+        "photo-13",
+        "photo-05",
+        "photo-07",
+        "photo-01",
+        "photo-02",
+        "photo-04",
+        "photo-10"
+      ],
+      "coverId": "photo-01"
+    },
+    {
+      "id": "small-moments",
+      "title": "Nature",
+      "photoIds": ["photo-12", "photo-03", "photo-08", "photo-09"],
+      "coverId": "photo-12"
+    }
+  ]
+}
