@@ -154,7 +154,7 @@ let sudoku = [...initialSudoku],
 let data,
   library,
   icons,
-  current = { app: "home", section: "" };
+  current = { app: null, section: "" };
 let media = { items: [], index: 0, scale: 0, opener: null };
 let lastProjectOpener = null;
 

@@ -34,10 +34,11 @@ Interaction checks covered the actual PDF download; every contextual email reply
 
 ## Visual review
 
-The existing paper, Polaroid, scrapbook and Apple Photos references remain the aesthetic source: espresso grid, cream paper, oxblood accents, original typefaces and the user’s actual photographs. The review preserves those choices and adds no new decorative stickers. Page changes use a short 6px content entrance, while window frames stay still. Hint and Reset do not animate. Reduced motion disables the entrance and hover movement.
+The existing paper, Polaroid, scrapbook and Apple Photos references remain the aesthetic source: espresso grid, cream paper, oxblood accents, original typefaces and the user’s actual photographs. The review preserves those choices and adds no new decorative stickers. Page changes use a short 6px content entrance, while window frames stay still. The same entrance runs on all six app views, including the first visit. Hint and Reset do not animate. Reduced motion disables the entrance and hover movement.
 
 - [Poolsuite](https://poolsuite.net/) was inspected for bounded desktop windows and persistent navigation.
 - [Jessica Hische’s portfolio](https://jessicahische.is/) was inspected for clear artwork groupings and restrained interface typography.
+- Apple’s [Notes view guidance](https://support.apple.com/en-ie/guide/notes/apd8b73d28be/mac) and the [USWDS typography guidance](https://designsystem.digital.gov/components/typography/) were consulted for readable grouping and clear separation. The Home paper notes are spaced so neither covers the other.
 - Nielsen Norman Group’s guidance on [content dispersion](https://www.nngroup.com/articles/content-dispersion/) informed the limits on window height and empty space. Its [consistency guidance](https://www.nngroup.com/articles/consistency-and-standards/) informed shared navigation, controls and image treatment.
 
 The resulting layout keeps the window and dock together, compacts short laptop views, adapts narrow calendar columns into readable day groups, keeps all 16 desktop photo thumbnails visible without changing image proportions, and prevents attachment thumbnails from crossing inbox rows. Phone layouts keep the existing collage materials in a readable vertical arrangement.
