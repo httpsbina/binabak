@@ -1359,8 +1359,6 @@ dialog::backdrop {
   background: #30282466;
   backdrop-filter: blur(8px);
 }
-dialog[open] {
-}
 .project-dialog {
   width: 1120px;
   overflow: auto;
@@ -2325,5 +2323,454 @@ dialog[open] {
     z-index: 3;
     box-shadow: 0 4px 12px #0002;
     background: var(--paper);
+  }
+}
+
+/* Shared reading layouts: keep content inside its pane at intermediate widths. */
+.health-group {
+  margin: 0;
+}
+.mail-preview {
+  -webkit-line-clamp: 1;
+}
+.mail-thumb {
+  top: 24px;
+  height: 36px;
+}
+.mail-reader,
+.note-reader,
+.photo-scroll {
+  scrollbar-gutter: stable;
+}
+.message-attachment img {
+  max-height: min(240px, 28dvh);
+}
+.project-note-grid > *,
+.coursework-grid > *,
+.health-row dd {
+  min-width: 0;
+}
+.project-side a,
+.technical-section,
+.resume-section {
+  overflow-wrap: anywhere;
+}
+.media-stage {
+  height: min(78dvh, calc(100dvh - 132px), 1040px);
+}
+@media (min-width: 951px) and (max-width: 1350px) {
+  .calendar-shell {
+    grid-template-columns: 205px minmax(0, 1fr);
+  }
+  .calendar-shell .native-toolbar .window-controls {
+    width: 205px;
+  }
+  .calendar-sidebar {
+    padding: 20px 8px;
+  }
+  .calendar-content {
+    padding: 24px 16px;
+  }
+  .calendar-event {
+    padding: 10px;
+    gap: 8px;
+  }
+  .calendar-event h3 {
+    font-size: 16px;
+  }
+  .calendar-event p {
+    font-size: 13px;
+  }
+}
+@media (min-width: 801px) and (max-width: 1100px) {
+  .notes-sidebar,
+  .mail-sidebar {
+    display: none;
+  }
+  .notes-shell {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+  .mail-shell {
+    grid-template-columns: 310px minmax(0, 1fr);
+  }
+  .notes-shell .window-controls,
+  .mail-shell .window-controls {
+    width: auto;
+  }
+  .notes-title,
+  .mail-title {
+    width: auto;
+  }
+}
+@media (min-width: 951px) and (max-width: 1100px) {
+  .calendar-event {
+    padding: 8px;
+    gap: 6px;
+  }
+  .calendar-event p {
+    font-size: 12px;
+  }
+}
+@media (min-width: 801px) and (max-width: 950px) {
+  .calendar-content {
+    overflow: auto;
+  }
+  .week-head,
+  .week-body {
+    display: none;
+  }
+  .agenda {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .agenda-day h2 {
+    font-size: 14px;
+    margin: 0 0 12px;
+    color: var(--muted);
+  }
+  .agenda .calendar-event {
+    position: static;
+    height: auto;
+    padding: 16px;
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+  .agenda .calendar-event h3 {
+    font-size: 18px;
+  }
+  .agenda .calendar-event p {
+    font-size: 14px;
+  }
+  .calendar-views span:not(.selected) {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .calendar-views span:not(.selected) {
+    display: none;
+  }
+  .calendar-views {
+    margin-left: auto;
+  }
+  .media-stage {
+    height: min(75dvh, calc(100dvh - 100px));
+  }
+  .barcode {
+    width: min(190px, 85%);
+    margin: 20px auto 0;
+  }
+  .project-scrap.code {
+    width: 125px;
+  }
+  .project-scrap.map {
+    left: -95px;
+    width: 125px;
+  }
+}
+@media (max-width: 480px) {
+  .notes-shell .native-toolbar > .quiet {
+    display: none;
+  }
+  .notes-shell .native-toolbar {
+    gap: 6px;
+  }
+  .notes-shell .window-controls {
+    padding: 0 10px;
+    gap: 5px;
+  }
+  .notes-shell .window-controls i {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Four complete rows on desktop; keep every original image proportion. */
+@media (min-width: 801px) {
+  .photo-grid {
+    height: 100%;
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+  }
+  .photo-tile {
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+  .photo-tile img {
+    min-width: 0;
+    min-height: 0;
+  }
+}
+@media (max-width: 800px) {
+  .project-scrap.code {
+    position: relative;
+    inset: auto;
+    width: min(220px, 100%);
+    margin: 24px 0 0 8px;
+    font-size: 9px;
+    padding: 20px;
+    min-height: 0;
+  }
+  .hero-portrait {
+    width: min(85%, 280px);
+    margin: 12px auto 180px;
+  }
+  .project-scrap.map {
+    left: -15px;
+    bottom: -155px;
+    width: 185px;
+    padding: 20px;
+    font-size: 9px;
+  }
+}
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 26px;
+  }
+  .hero-role {
+    font-size: 25px;
+  }
+  .hero .identity-card {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .identity-card {
+    transform: none;
+  }
+  .hero .notebook {
+    transform: rotate(0.5deg);
+  }
+}
+@media (min-width: 1101px) and (max-height: 950px) {
+  .calendar-event {
+    padding: 10px;
+    gap: 8px;
+  }
+  .calendar-event h3 {
+    font-size: 16px;
+  }
+  .calendar-event p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 800px) {
+  .hero-copy {
+    padding-bottom: 0;
+  }
+  .hero .identity-card {
+    gap: 20px !important;
+  }
+}
+@media (min-width: 951px) and (max-width: 1100px) {
+  .calendar-event {
+    padding: 6px;
+    gap: 4px;
+  }
+}
+@media (min-width: 801px) and (max-height: 950px) {
+  .health-shell {
+    padding: 20px 32px;
+  }
+  .profile {
+    margin: 16px 0;
+  }
+  .profile img {
+    width: 80px;
+    height: 80px;
+  }
+  .health-row {
+    padding: 14px 0;
+  }
+  .sudoku-layout {
+    grid-template-columns: minmax(0, 180px) minmax(95px, 1fr);
+  }
+  .sudoku-card h2 {
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 801px) and (max-width: 1150px) {
+  .project-scrap.code {
+    bottom: 90px;
+  }
+  .project-scrap.map {
+    left: -175px;
+    bottom: -135px;
+  }
+}
+
+/* Short laptops keep the complete window and dock in view. Long notes scroll inside. */
+@media (min-width: 801px) and (max-height: 950px) {
+  .desktop {
+    padding: 20px 32px 16px;
+    gap: 16px;
+  }
+  .app-window,
+  .hero {
+    height: min(900px, calc(100dvh - 138px));
+    min-height: 600px;
+  }
+  .dock {
+    min-height: 86px;
+    padding: 8px 28px;
+  }
+  .dock img {
+    width: 48px;
+    height: 48px;
+  }
+  .dock a {
+    font-size: 12px;
+    gap: 6px;
+  }
+  .native-toolbar {
+    height: 64px;
+  }
+  .calendar-shell,
+  .notes-shell,
+  .mail-shell {
+    grid-template-rows: 64px minmax(0, 1fr);
+  }
+  .calendar-content {
+    overflow: auto;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .calendar-title {
+    margin-bottom: 14px;
+  }
+  .mailbox-list {
+    padding: 10px 12px;
+  }
+  .primary-tab {
+    padding: 4px;
+    margin-bottom: 8px;
+  }
+  .mail-item {
+    min-height: 54px;
+    padding: 5px 10px;
+  }
+  .mail-item strong {
+    line-height: 15px;
+  }
+  .mail-item time {
+    top: 5px;
+  }
+  .mail-subject {
+    line-height: 14px;
+    margin: 1px 0;
+  }
+  .mail-preview {
+    line-height: 12px;
+  }
+  .mail-thumb {
+    width: 50px;
+    height: 28px;
+    top: 22px;
+  }
+  .health-shell {
+    padding: 16px 28px;
+  }
+  .health-header {
+    min-height: 32px;
+  }
+  .profile {
+    margin: 12px 0;
+    gap: 8px;
+  }
+  .profile img {
+    width: 64px;
+    height: 64px;
+  }
+  .health-column {
+    gap: 20px;
+  }
+  .health-row {
+    padding: 12px 0;
+  }
+  .sudoku-card {
+    padding: 18px 22px;
+  }
+  .sudoku-layout {
+    grid-template-columns: minmax(0, 160px) minmax(95px, 1fr);
+  }
+  .sudoku-card h2 {
+    margin-bottom: 14px;
+  }
+  .sudoku-actions {
+    gap: 8px;
+  }
+  .sudoku-status {
+    margin-top: 0;
+  }
+  .identity-card {
+    min-height: 470px;
+    padding: 26px 32px;
+    transform: rotate(-2deg);
+  }
+  .hero h1 {
+    font-size: clamp(36px, 4.5vw, 60px);
+    margin-bottom: 24px;
+  }
+  .hero-role {
+    font-size: 30px;
+  }
+  .hero-school {
+    font-size: 20px;
+  }
+  .hero-portrait .portrait {
+    height: 260px;
+  }
+  .note-clip {
+    width: 48px;
+    top: -8px;
+    left: calc(50% - 24px);
+  }
+}
+/* The fastener stays above the note text at every size. */
+.note-clip {
+  width: 48px;
+  top: -8px;
+  left: calc(50% - 24px);
+}
+.note-reader {
+  container: resume-reader / inline-size;
+}
+.resume-sections.research {
+  display: block;
+}
+@container resume-reader (min-width: 580px) {
+  .resume-sections.research {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 26px;
+  }
+}
+@media (min-width: 801px) and (max-height: 950px) {
+  .primary-tab {
+    line-height: 14px;
+    padding: 3px;
+    margin-bottom: 6px;
+  }
+  .mail-reader {
+    padding: 20px 24px;
+  }
+  .mail-reader h2 {
+    margin-bottom: 14px;
+  }
+  .message-meta {
+    line-height: 1.6;
+    padding-bottom: 14px;
+  }
+  .message-body {
+    padding-top: 18px;
+    line-height: 1.5;
+  }
+  .message-body p {
+    margin-bottom: 16px;
+  }
+  .message-attachment img {
+    max-height: clamp(140px, calc(100dvh - 610px), 220px);
   }
 }

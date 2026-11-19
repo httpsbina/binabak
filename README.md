@@ -28,7 +28,19 @@ node --check assets/app.js
 node scripts/check-site.mjs
 ```
 
-Browser verification covered all six views at 1440, 1024 and 390 pixels; ten project dialogs; six résumé sections and the PDF download; replies from all nine emails; mail search; full-map fit and zoom; all 16 photos and album navigation; Sudoku validation, hints, reset and inline completion; and motion-free page changes. The checks inspect local asset requests and JavaScript errors as well as visible behavior.
+The November 18 review covered all six pages across 14 viewport configurations, from a 320px phone to the 1683 × 3476 zoomed-out preview. It included 144 detailed layout and image-fit checks across the six résumé sections, nine emails, five photo-library/album views, ten project notes and attachment viewers. No tested horizontal text overflow, clipped calendar-card copy, failed local assets or JavaScript runtime errors remained.
+
+Interaction checks covered the actual PDF download; every contextual email reply; search; map fit/zoom; all 16 full-size photographs on desktop and phone; album and keyboard navigation; Sudoku validation, repeated hints, reset and inline completion; and keyboard skip navigation. Full messages and long project notes remain scrollable inside their readers. Inbox snippets intentionally show one line.
+
+## Visual review
+
+The existing paper, Polaroid, scrapbook and Apple Photos references remain the aesthetic source: espresso grid, cream paper, oxblood accents, original typefaces and the user’s actual photographs. The review preserves those choices and adds no new decorative stickers or page motion.
+
+- [Poolsuite](https://poolsuite.net/) was inspected for bounded desktop windows and persistent navigation.
+- [Jessica Hische’s portfolio](https://jessicahische.is/) was inspected for clear artwork groupings and restrained interface typography.
+- Nielsen Norman Group’s guidance on [content dispersion](https://www.nngroup.com/articles/content-dispersion/) informed the limits on window height and empty space. Its [consistency guidance](https://www.nngroup.com/articles/consistency-and-standards/) informed shared navigation, controls and image treatment.
+
+The resulting layout keeps the window and dock together, compacts short laptop views, adapts narrow calendar columns into readable day groups, keeps all 16 desktop photo thumbnails visible without changing image proportions, and prevents attachment thumbnails from crossing inbox rows. Phone layouts keep the existing collage materials in a readable vertical arrangement.
 
 ## Hosting
 

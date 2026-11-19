@@ -239,6 +239,14 @@ function sections(record, technical = false) {
     .join("");
 }
 function renderDock() {
+  if (dock.children.length === apps.length) {
+    for (const link of dock.children) {
+      if (link.getAttribute("href") === "#" + current.app)
+        link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    }
+    return;
+  }
   dock.innerHTML = apps
     .map(
       ([app, label, image]) =>
@@ -459,7 +467,7 @@ function openProject(key, opener = document.activeElement) {
               .join("")
           : ""
       }${["accounting", "statistics"].includes(key) ? '<button class="text-button" data-project="coursework">All coursework</button>' : ""}</aside></div>`;
-  projectDialog.innerHTML = `<article class="paper-note"><img class="note-clip" src="assets/ui/binder-clip.svg" alt=""><button class="project-close" data-close>Close ×</button><p class="note-category">${esc(p.category)}</p><h1>${esc(p.title)}</h1><p class="project-subtitle">${esc(p.subtitle)}</p><p class="project-period">${esc(p.period)}</p>${p.intro ? `<p class="project-intro">${esc(p.intro)}</p>` : ""}${body}<button class="primary project-return" data-close>Return to calendar</button></article>`;
+  projectDialog.innerHTML = `<article class="paper-note"><img class="note-clip" src="assets/ui/binder-clip.svg" alt=""><button class="project-close" data-close>Close ×</button><p class="note-category">${esc(p.category)}</p><h1>${esc(p.title)}</h1><p class="project-subtitle">${esc(p.subtitle)}</p><p class="project-period">${esc(p.period)}</p>${p.intro ? `<p class="project-intro">${esc(p.intro)}</p>` : ""}${body}<button class="primary project-return" data-close>${current.app === "calendar" ? "Return to calendar" : "Back to home"}</button></article>`;
   if (!projectDialog.open) projectDialog.showModal();
   projectDialog.scrollTop = 0;
 }
@@ -541,6 +549,10 @@ function checkSudoku(showErrors = false) {
 }
 function renderRoute() {
   const previousApp = current.app;
+  const horizontalNavigation = main.querySelector(
+    ".mail-messages, .notes-list, .photos-sidebar",
+  );
+  const navigationOffset = horizontalNavigation?.scrollLeft || 0;
   const parts = location.hash.slice(1).split("/");
   const allowed = new Set(apps.map((a) => a[0]));
   current = {
@@ -549,6 +561,24 @@ function renderRoute() {
   };
   const renderers = { home, calendar, resume, about, mail, photos };
   main.innerHTML = renderers[current.app]();
+  if (current.app === previousApp) {
+    const navigation = main.querySelector(
+      ".mail-messages, .notes-list, .photos-sidebar",
+    );
+    if (navigation) navigation.scrollLeft = navigationOffset;
+  }
+  const navigation = main.querySelector(
+    ".mail-messages, .notes-list, .photos-sidebar",
+  );
+  if (navigation && navigation.scrollWidth > navigation.clientWidth) {
+    const selected = navigation.querySelector('[aria-current="page"]');
+    if (selected) {
+      const container = navigation.getBoundingClientRect(),
+        item = selected.getBoundingClientRect();
+      if (item.left < container.left || item.right > container.right)
+        navigation.scrollLeft += item.left - container.left;
+    }
+  }
   renderDock();
   document.title =
     current.app === "home"
@@ -578,6 +608,11 @@ document.addEventListener("click", (event) => {
     return;
   }
   if (!button) return;
+  if (button.classList.contains("skip-link")) {
+    event.preventDefault();
+    main.focus({ preventScroll: true });
+    return;
+  }
   if (button.hasAttribute("data-close")) {
     button.closest("dialog")?.close();
     return;
