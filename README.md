@@ -28,6 +28,18 @@ node --check assets/app.js
 node scripts/check-site.mjs
 ```
 
+After changing CSS, JavaScript or content JSON, run `node scripts/stamp-assets.mjs`. It adds content-based resource versions so returning visitors and preview tabs receive the current files. The site still needs no build step.
+
+The optional browser regression suite uses an installed Playwright package:
+
+```sh
+node scripts/check-browser.cjs
+```
+
+Set `PLAYWRIGHT_MODULE` to a package path if it is installed outside this repository, `CHROMIUM_EXECUTABLE` to use an existing Chromium executable, or `PREVIEW_URL` to test a different local server. Screenshots and results go to a temporary directory; `REVIEW_ARTIFACTS` overrides that destination.
+
+The November 23 cleanup passed 84 responsive layouts, 120 detailed views, 32 full-photo fits and 12 shared page entrances. It also checked search persistence and empty states, all contextual replies, PDF download, sticky project-dialog Close controls, attachment fit/zoom, Sudoku and reduced motion. Desktop and phone screenshots were visually reviewed.
+
 The November 18 review covered all six pages across 14 viewport configurations, from a 320px phone to the 1683 × 3476 zoomed-out preview. It included 144 detailed layout and image-fit checks across the six résumé sections, nine emails, five photo-library/album views, ten project notes and attachment viewers. No tested horizontal text overflow, clipped calendar-card copy, failed local assets or JavaScript runtime errors remained.
 
 Interaction checks covered the actual PDF download; every contextual email reply; search; map fit/zoom; all 16 full-size photographs on desktop and phone; album and keyboard navigation; Sudoku validation, repeated hints, reset and inline completion; and keyboard skip navigation. Full messages and long project notes remain scrollable inside their readers. Inbox snippets intentionally show one line.
@@ -42,6 +54,18 @@ The existing paper, Polaroid, scrapbook and Apple Photos references remain the a
 - Nielsen Norman Group’s guidance on [content dispersion](https://www.nngroup.com/articles/content-dispersion/) informed the limits on window height and empty space. Its [consistency guidance](https://www.nngroup.com/articles/consistency-and-standards/) informed shared navigation, controls and image treatment.
 
 The resulting layout keeps the window and dock together, compacts short laptop views, adapts narrow calendar columns into readable day groups, keeps all 16 desktop photo thumbnails visible without changing image proportions, and prevents attachment thumbnails from crossing inbox rows. Phone layouts keep the existing collage materials in a readable vertical arrangement.
+
+## November 23 research and cleanup
+
+The supplied scrapbook and stationery references remain the visual direction. Research informed the organization and behavior rather than replacing the palette or adding arbitrary decorations:
+
+- [Brittany Chiang](https://brittanychiang.com/) and [Maggie Appleton](https://maggieappleton.com/) were reviewed for clear hierarchy and expressive design with readable content. Notes now uses one text column with more space between projects, instead of packing research into adjacent columns.
+- Nielsen Norman Group’s [visual design guidance](https://www.nngroup.com/articles/good-visual-design/) informed quieter grid lines, clearer secondary labels and consistent grouping. Secondary text is a darker warm gray; the cream, wine, sage and rose palette and existing typefaces remain.
+- [Apple’s motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion) informed retaining the brief, shared content entrance with stationary frames. There is no page zoom or fade, and reduced motion remains supported.
+- [W3C contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) informed the secondary-text adjustment. This is a targeted readability improvement, not a claim of whole-site conformance.
+- [MDN’s caching guidance](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching) informed content-based asset URLs after the actual preview was found to be using old cached scripts and styles.
+
+Unused calendar modes, the misleading Today action and the decorative Notes formatting control were removed. Search now keeps its query when opening a result, gives a useful empty state and restores content when cleared. Compose starts a new message; Reply keeps the selected email subject. Long project dialogs keep Close within reach. Photo hover uses an outline without darkening the photographs. Folder and download controls use official Lucide icons, with their license included in `assets/ui/lucide-license.txt`.
 
 ## Hosting
 

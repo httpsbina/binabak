@@ -5,7 +5,7 @@
   --line: #d8d1c9;
   --sidebar: #eee9e1;
   --white: #fcfbf8;
-  --muted: #857e76;
+  --muted: #685e56;
   --sans: Inter, Arial, sans-serif;
   --mono: "IBM Plex Mono", monospace;
   --hand: "Nothing You Could Do", cursive;
@@ -18,8 +18,8 @@ body {
   margin: 0;
   background-color: var(--ink);
   background-image:
-    linear-gradient(#fff1 1px, transparent 1px),
-    linear-gradient(90deg, #fff1 1px, transparent 1px);
+    linear-gradient(#ffffff0b 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff0b 1px, transparent 1px);
   background-size: 40px 40px;
   color: var(--ink);
   font: 16px/1.5 var(--sans);
@@ -671,7 +671,7 @@ button svg {
 .calendar-event small {
   font-size: 9px;
   line-height: 1.3;
-  color: var(--accent);
+  color: #655b52;
   text-transform: uppercase;
 }
 .calendar-event h3 {
@@ -2734,19 +2734,10 @@ dialog::backdrop {
   top: -8px;
   left: calc(50% - 24px);
 }
-.note-reader {
-  container: resume-reader / inline-size;
-}
 .resume-sections.research {
   display: block;
 }
-@container resume-reader (min-width: 580px) {
-  .resume-sections.research {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 26px;
-  }
-}
+
 @media (min-width: 801px) and (max-height: 950px) {
   .primary-tab {
     line-height: 14px;
@@ -2816,4 +2807,28 @@ dialog::backdrop {
     right: -60px;
     width: 190px;
   }
+}
+
+/* November cleanup: one comfortable reading column, quieter controls, clear states. */
+.note-reader .resume-sections { max-width: 66ch; }
+.note-reader .resume-sections.research { display: block; }
+.note-reader .resume-section { margin-bottom: 30px; font-size: 16px; line-height: 1.6; }
+.note-reader .resume-section h3 { font-size: 14px; line-height: 1.4; margin-bottom: 9px; }
+.note-reader .resume-section .bullet { margin-top: 8px; }
+.note-reader .resume-section:last-child { margin-bottom: 0; }
+.note-item { padding-top: 14px; padding-bottom: 14px; }
+.note-item strong { font-size: 15px; line-height: 1.35; }
+.note-item small { line-height: 1.5; }
+.note-date, .message-meta time { font-size: 12px; }
+.sidebar h2, .sidebar h3 { font-size: 12px; }
+.mail-item time { font-size: 11px; }
+.photo-tile:hover { filter: none; outline: 1px solid var(--wine); outline-offset: -1px; }
+.empty-state { padding: 24px 12px; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.empty-state span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
+.project-close { position: sticky; top: 12px; display: block; width: max-content; margin: 12px 14px -46px auto; padding: 6px 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; z-index: 3; }
+@media(max-width:800px) {
+ .note-item { padding-top: 10px; padding-bottom: 10px; }
+ .note-item strong { font-size: 13px; }
+ .mail-item time { font-size: 10px; }
+ .empty-state { min-width: 200px; }
 }

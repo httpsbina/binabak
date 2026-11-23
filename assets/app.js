@@ -155,6 +155,8 @@ let data,
   library,
   icons,
   current = { app: null, section: "" };
+let mailQuery = "", noteQuery = "", noteSearchOpen = false;
+let lastMailIndex = 0, lastNoteSection = "overview";
 let media = { items: [], index: 0, scale: 0, opener: null };
 let lastProjectOpener = null;
 
@@ -275,7 +277,7 @@ function calendar() {
       { length: 30 },
       (_, i) => `<span class="${i === 17 ? "today" : ""}">${i + 1}</span>`,
     ).join("");
-  return `<section class="app-window calendar-shell" aria-label="My calendar"><header class="native-toolbar">${controls()}<h1>Calendar</h1><div class="calendar-views" aria-label="Calendar view"><span>Day</span><span class="selected">Week</span><span>Month</span><span>Year</span></div></header><aside class="sidebar calendar-sidebar panel-rule"><div class="mini-month"><strong>November 2026</strong><div class="mini-grid">${mini}</div></div><div class="filter-heading"><h2>Explore by area</h2><button data-action="reset-filters">Reset</button></div><div class="filters">${categories.map(([key, label, color]) => `<label class="calendar-filter" style="--swatch:${color}"><input type="checkbox" data-filter="${key}" ${filters.has(key) ? "checked" : ""}>${label}</label>`).join("")}</div><div class="relevant"><h2>Relevant classes</h2><button class="class-link" data-project="statistics"><strong>Business Statistics</strong><small>Excel / pandas / pricing analysis</small></button><button class="class-link" data-project="accounting"><strong>Managerial Accounting</strong><small>Excel formulas / cost models</small></button><button class="class-link" data-project="coursework"><strong>Database Design</strong><small>SQL / joins / relational models</small></button></div><button class="text-button" data-project="coursework">View coursework</button><button class="text-button" data-project="research">Research experience</button></aside><div class="calendar-content"><div class="calendar-title"><h2>November 2026</h2><button class="today-button" data-action="reset-filters">Today</button></div><div class="week-head">${["Mon", "Tue", "Wed", "Thu", "Fri"].map((d, i) => `<span>${d}<b class="${i === 2 ? "selected" : ""}">${16 + i}</b></span>`).join("")}</div><div class="week-body">${Array.from({ length: 9 }, (_, i) => `<span class="time-label" style="top:${i * 12.5}%">${String(8 + i * 2).padStart(2, "0")}:00</span>`).join("")}${Array.from(
+  return `<section class="app-window calendar-shell" aria-label="My calendar"><header class="native-toolbar">${controls()}<h1>Calendar</h1><div class="calendar-views" aria-label="Calendar view"><span class="selected">Week</span></div></header><aside class="sidebar calendar-sidebar panel-rule"><div class="mini-month"><strong>November 2026</strong><div class="mini-grid">${mini}</div></div><div class="filter-heading"><h2>Explore by area</h2><button data-action="reset-filters">Reset</button></div><div class="filters">${categories.map(([key, label, color]) => `<label class="calendar-filter" style="--swatch:${color}"><input type="checkbox" data-filter="${key}" ${filters.has(key) ? "checked" : ""}>${label}</label>`).join("")}</div><div class="relevant"><h2>Relevant classes</h2><button class="class-link" data-project="statistics"><strong>Business Statistics</strong><small>Excel / pandas / pricing analysis</small></button><button class="class-link" data-project="accounting"><strong>Managerial Accounting</strong><small>Excel formulas / cost models</small></button><button class="class-link" data-project="coursework"><strong>Database Design</strong><small>SQL / joins / relational models</small></button></div><button class="text-button" data-project="coursework">View coursework</button><button class="text-button" data-project="research">Research experience</button></aside><div class="calendar-content"><div class="calendar-title"><h2>November 2026</h2></div><div class="week-head">${["Mon", "Tue", "Wed", "Thu", "Fri"].map((d, i) => `<span>${d}<b class="${i === 2 ? "selected" : ""}">${16 + i}</b></span>`).join("")}</div><div class="week-body">${Array.from({ length: 9 }, (_, i) => `<span class="time-label" style="top:${i * 12.5}%">${String(8 + i * 2).padStart(2, "0")}:00</span>`).join("")}${Array.from(
     { length: 5 },
     (_, i) =>
       `<div class="day-column" style="left:${i * 20}%">${events
@@ -301,7 +303,8 @@ function calendar() {
 function resume() {
   const selected = Object.hasOwn(noteNames, current.section)
     ? current.section
-    : "overview";
+    : lastNoteSection;
+  lastNoteSection = selected;
   const tabs = (keys) =>
     keys
       .map(
@@ -309,7 +312,7 @@ function resume() {
           `<button class="note-item ${selected === key ? "selected" : ""}" data-note="${key}" ${selected === key ? 'aria-current="page"' : ""}><strong>${noteNames[key]}</strong><small>${notePreviews[key]}</small></button>`,
       )
       .join("");
-  return `<section class="app-window notes-shell" aria-label="Résumé in Notes"><header class="native-toolbar">${controls()}<div class="notes-title"><h1>Notes</h1></div><span class="quiet" aria-hidden="true">Aa</span><div class="toolbar-end"><input class="notes-search" type="search" placeholder="Search résumé" aria-label="Search résumé" hidden><a class="download-pdf" href="${PDF}" download>${icon("archive")}Download PDF</a><button class="icon-button" data-action="note-search" aria-label="Search résumé">${icon("search")}</button></div></header><aside class="sidebar notes-sidebar panel-rule"><h2>iCloud</h2>${side("All iCloud", "#resume", "panel-left", false, 6)}${side("Résumé", "#resume", "inbox", true, 6)}${side("Experience", "#resume/research", "inbox", false, 3)}${side("Education", "#resume/education", "inbox", false, 1)}${side("Skills & interests", "#resume/skills", "inbox", false, 1)}<div class="sidebar-footer"><strong>Binafsha Bakhramova</strong>Business analytics<br>&amp; political science<br><br>Northeastern / Class of 2029</div></aside><nav class="notes-list" aria-label="Résumé sections"><h2>Pinned</h2>${tabs(["overview"])}<h2>Experience</h2>${tabs(["research", "product", "leadership"])}<h2>Education &amp; skills</h2>${tabs(["education", "skills"])}</nav><article class="note-reader" aria-labelledby="note-title"><p class="note-date">November 2026</p><h2 id="note-title">${selected === "overview" ? "Binafsha Bakhramova" : noteNames[selected]}</h2><p class="note-subtitle">${selected === "overview" ? "Business analytics & political science" : "Northeastern University / Résumé"}</p><div class="resume-sections ${selected === "research" ? "research" : ""}">${sections(data.notes[selected].body)}</div></article></section>`;
+  return `<section class="app-window notes-shell" aria-label="Résumé in Notes"><header class="native-toolbar">${controls()}<div class="notes-title"><h1>Notes</h1></div><div class="toolbar-end"><input id="notes-search" class="notes-search" type="search" placeholder="Search résumé" aria-label="Search résumé" value="${esc(noteQuery)}" ${noteSearchOpen ? "" : "hidden"}><a class="download-pdf" href="${PDF}" download>${icon("download")}Download PDF</a><button class="icon-button" data-action="note-search" aria-label="Search résumé" aria-controls="notes-search" aria-expanded="${noteSearchOpen}">${icon("search")}</button></div></header><aside class="sidebar notes-sidebar panel-rule"><h2>iCloud</h2>${side("All iCloud", "#resume", "folder", false, 6)}${side("Résumé", "#resume", "folder", true, 6)}${side("Experience", "#resume/research", "folder", false, 3)}${side("Education", "#resume/education", "folder", false, 1)}${side("Skills & interests", "#resume/skills", "folder", false, 1)}<div class="sidebar-footer"><strong>Binafsha Bakhramova</strong>Business analytics<br>&amp; political science<br><br>Northeastern / Class of 2029</div></aside><nav class="notes-list" aria-label="Résumé sections"><h2>Pinned</h2>${tabs(["overview"])}<h2>Experience</h2>${tabs(["research", "product", "leadership"])}<h2>Education &amp; skills</h2>${tabs(["education", "skills"])}<p class="empty-state notes-empty" hidden>No notes found.<span>Try another word.</span></p></nav><article class="note-reader" aria-labelledby="note-title"><p class="note-date">November 2026</p><h2 id="note-title">${selected === "overview" ? "Binafsha Bakhramova" : noteNames[selected]}</h2><p class="note-subtitle">${selected === "overview" ? "Business analytics & political science" : "Northeastern University / Résumé"}</p><div class="resume-sections ${selected === "research" ? "research" : ""}">${sections(data.notes[selected].body)}</div></article></section>`;
 }
 function healthRow(label, value) {
   return `<div class="health-row"><dt>${label}</dt><dd>${value}</dd></div>`;
@@ -375,13 +378,14 @@ function mail() {
       /^\d$/.test(current.section) &&
       Number(current.section) < data.emails.length
         ? Number(current.section)
-        : 0,
+        : lastMailIndex,
     m = data.emails[index];
+  lastMailIndex = index;
   const attachments = emailAttachments(index);
   const attachmentHTML = attachments.length
     ? `<div class="message-attachments">${attachments.map((a, i) => (a.url ? `<a class="message-attachment" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(a.title)}"><img src="${a.src}" alt="${esc(a.title)}"></a>` : `<button class="message-attachment" data-mail-image="${index}:${i}" aria-label="Open attachment: ${esc(a.alt)}"><img src="${a.src}" alt="${esc(a.alt)}"></button>`)).join("")}</div>`
     : "";
-  return `<section class="app-window mail-shell" aria-label="Contact in Mail"><header class="native-toolbar">${controls()}<div class="mail-title"><h1>Inbox</h1><p class="mail-total">9 messages</p></div><div class="toolbar-end"><a class="icon-button" href="${replyLink(m.subject)}" aria-label="Compose an email">${icon("square-pen")}</a><a class="mail-toolbar-reply" href="${replyLink(m.subject)}">${icon("reply")}Reply</a><input class="mail-search" type="search" aria-label="Search messages" placeholder="Search"></div></header><aside class="sidebar mail-sidebar panel-rule"><h2>Favorites</h2>${side("Inbox", "#mail", "inbox", true, 9)}<a class="side-item" href="${replyLink("Hi Bina!")}">${icon("send")}Write to me</a><div class="contact-links"><h2>Elsewhere</h2>${external(LINKEDIN, "LinkedIn")}${external(GITHUB, "GitHub")}<a href="tel:+13478934988">347-893-4988</a></div></aside><nav class="mailbox-list" aria-label="Messages"><div class="primary-tab">Primary</div><div class="mail-messages">${mailOrder
+  return `<section class="app-window mail-shell" aria-label="Contact in Mail"><header class="native-toolbar">${controls()}<div class="mail-title"><h1>Inbox</h1><p class="mail-total" aria-live="polite">9 messages</p></div><div class="toolbar-end"><a class="icon-button" href="${replyLink("Hi Bina!")}" aria-label="Compose an email">${icon("square-pen")}</a><a class="mail-toolbar-reply" href="${replyLink(m.subject)}">${icon("reply")}Reply</a><input class="mail-search" type="search" aria-label="Search messages" placeholder="Search" value="${esc(mailQuery)}"></div></header><aside class="sidebar mail-sidebar panel-rule"><h2>Favorites</h2>${side("Inbox", "#mail", "inbox", true, 9)}<a class="side-item" href="${replyLink("Hi Bina!")}">${icon("send")}Write to me</a><div class="contact-links"><h2>Elsewhere</h2>${external(LINKEDIN, "LinkedIn")}${external(GITHUB, "GitHub")}<a href="tel:+13478934988">347-893-4988</a></div></aside><nav class="mailbox-list" aria-label="Messages"><div class="primary-tab">Primary</div><div class="mail-messages">${mailOrder
     .map((i) => {
       const x = data.emails[i],
         a = emailAttachments(i)[0];
@@ -389,7 +393,7 @@ function mail() {
     })
     .join(
       "",
-    )}</div></nav><article class="mail-reader"><h2>${esc(m.subject)}</h2><div class="message-meta"><strong>${esc(m.sender)}</strong><time datetime="${mailISODates[index]}">${esc(m.date)}</time><div>${esc(m.context)}</div><div>${esc(m.recipient)}</div></div><div class="message-body">${m.body
+    )}<p class="empty-state mail-empty" hidden>No messages found.<span>Try a name or subject.</span></p></div></nav><article class="mail-reader"><h2>${esc(m.subject)}</h2><div class="message-meta"><strong>${esc(m.sender)}</strong><time datetime="${mailISODates[index]}">${esc(m.date)}</time><div>${esc(m.context)}</div><div>${esc(m.recipient)}</div></div><div class="message-body">${m.body
     .split(/\n\n+/)
     .map((p) => `<p>${esc(p).replace(/\n/g, "<br>")}</p>`)
     .join(
@@ -467,7 +471,7 @@ function openProject(key, opener = document.activeElement) {
               .join("")
           : ""
       }${["accounting", "statistics"].includes(key) ? '<button class="text-button" data-project="coursework">All coursework</button>' : ""}</aside></div>`;
-  projectDialog.innerHTML = `<article class="paper-note"><img class="note-clip" src="assets/ui/binder-clip.svg" alt=""><button class="project-close" data-close>Close ×</button><p class="note-category">${esc(p.category)}</p><h1>${esc(p.title)}</h1><p class="project-subtitle">${esc(p.subtitle)}</p><p class="project-period">${esc(p.period)}</p>${p.intro ? `<p class="project-intro">${esc(p.intro)}</p>` : ""}${body}<button class="primary project-return" data-close>${current.app === "calendar" ? "Return to calendar" : "Back to home"}</button></article>`;
+  projectDialog.innerHTML = `<button class="project-close" data-close>Close ×</button><article class="paper-note"><img class="note-clip" src="assets/ui/binder-clip.svg" alt=""><p class="note-category">${esc(p.category)}</p><h1>${esc(p.title)}</h1><p class="project-subtitle">${esc(p.subtitle)}</p><p class="project-period">${esc(p.period)}</p>${p.intro ? `<p class="project-intro">${esc(p.intro)}</p>` : ""}${body}<button class="primary project-return" data-close>${current.app === "calendar" ? "Return to calendar" : "Back to home"}</button></article>`;
   if (!projectDialog.open) projectDialog.showModal();
   projectDialog.scrollTop = 0;
 }
@@ -547,6 +551,33 @@ function checkSudoku(showErrors = false) {
   if (solved)
     main.querySelector(".sudoku-status").textContent = "Puzzle complete.";
 }
+function updateMailSearch() {
+  const term = mailQuery.trim().toLowerCase();
+  let count = 0;
+  for (const row of main.querySelectorAll(".mail-item")) {
+    const message = data.emails[Number(row.dataset.email)];
+    const match = `${message.sender} ${message.subject} ${message.body}`.toLowerCase().includes(term);
+    row.hidden = !match;
+    if (match) count++;
+  }
+  main.querySelector(".mail-total").textContent = `${count} ${count === 1 ? "message" : "messages"}`;
+  main.querySelector(".mail-empty").hidden = count > 0;
+  main.querySelector(".mail-reader").hidden = count === 0;
+  main.querySelector(".mail-toolbar-reply").hidden = count === 0;
+}
+function updateNoteSearch() {
+  const term = noteQuery.trim().toLowerCase();
+  let count = 0;
+  for (const row of main.querySelectorAll(".note-item")) {
+    const key = row.dataset.note;
+    const match = `${noteNames[key]} ${data.notes[key].body.text}`.toLowerCase().includes(term);
+    row.hidden = !match;
+    if (match) count++;
+  }
+  main.querySelectorAll(".notes-list h2").forEach(heading => heading.hidden = Boolean(term));
+  main.querySelector(".notes-empty").hidden = count > 0;
+  main.querySelector(".note-reader").hidden = count === 0;
+}
 function renderRoute() {
   main.classList.remove("page-enter");
   const previousApp = current.app;
@@ -562,6 +593,8 @@ function renderRoute() {
   };
   const renderers = { home, calendar, resume, about, mail, photos };
   main.innerHTML = renderers[current.app]();
+  if (current.app === "mail") updateMailSearch();
+  if (current.app === "resume") updateNoteSearch();
   if (current.app === previousApp) {
     const navigation = main.querySelector(
       ".mail-messages, .notes-list, .photos-sidebar",
@@ -680,8 +713,11 @@ document.addEventListener("click", (event) => {
       break;
     case "note-search": {
       const input = main.querySelector(".notes-search");
-      input.hidden = !input.hidden;
-      if (!input.hidden) input.focus();
+      noteSearchOpen = !noteSearchOpen;
+      input.hidden = !noteSearchOpen;
+      button.setAttribute("aria-expanded", String(noteSearchOpen));
+      if (noteSearchOpen) input.focus();
+      else { noteQuery = ""; input.value = ""; updateNoteSearch(); }
       break;
     }
     case "check-sudoku":
@@ -737,32 +773,12 @@ main.addEventListener("input", (e) => {
     checkSudoku();
   }
   if (e.target.classList.contains("mail-search")) {
-    const term = e.target.value.toLowerCase();
-    let count = 0;
-    main.querySelectorAll(".mail-item").forEach((el) => {
-      const m = data.emails[Number(el.dataset.email)],
-        match = (m.sender + " " + m.subject + " " + m.body)
-          .toLowerCase()
-          .includes(term);
-      el.hidden = !match;
-      if (match) count++;
-    });
-    main.querySelector(".mail-total").textContent = count + " messages";
+    mailQuery = e.target.value;
+    updateMailSearch();
   }
   if (e.target.classList.contains("notes-search")) {
-    const term = e.target.value.toLowerCase();
-    main
-      .querySelectorAll(".note-item")
-      .forEach(
-        (el) =>
-          (el.hidden = !(
-            noteNames[el.dataset.note] +
-            " " +
-            data.notes[el.dataset.note].body.text
-          )
-            .toLowerCase()
-            .includes(term)),
-      );
+    noteQuery = e.target.value;
+    updateNoteSearch();
   }
 });
 main.addEventListener("keydown", (e) => {
@@ -856,9 +872,9 @@ async function loadJSON(path) {
 }
 try {
   [data, library, icons] = await Promise.all([
-    loadJSON("assets/content/portfolio.json"),
-    loadJSON("assets/photos/library.json"),
-    loadJSON("assets/ui/icons.json"),
+    loadJSON("assets/content/portfolio.json?v=9ed3348c95"),
+    loadJSON("assets/photos/library.json?v=8e3bc52298"),
+    loadJSON("assets/ui/icons.json?v=fa883f2245"),
   ]);
   renderRoute();
 } catch (error) {
