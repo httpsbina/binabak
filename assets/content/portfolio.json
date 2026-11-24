@@ -1,0 +1,1566 @@
+{
+  "projects": {
+    "coursework": {
+      "title": "Coursework",
+      "category": "NORTHEASTERN / ACADEMIC RECORD",
+      "subtitle": "Business Administration and Political Science / Data Science minor",
+      "period": "Expected graduation 2029",
+      "intro": "",
+      "body": {
+        "text": "ACCT 2301 / Managerial Accounting",
+        "size": 14.5,
+        "x": 222,
+        "y": 501,
+        "w": 450,
+        "runs": [
+          {
+            "start": 0,
+            "end": 33,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "",
+      "asideTitle": "",
+      "links": [],
+      "paperNote": "",
+      "current": [
+        {
+          "name": "MGSC 2301 / Business Statistics",
+          "description": "eBay analysis of 1,953 bid records and 136 auctions in Excel and Python; descriptive statistics, IQR, covariance, correlation and charts."
+        },
+        {
+          "name": "ACCT 2301 / Managerial Accounting",
+          "description": "Excel formulas and data tables for contribution margins, sales mix, break-even analysis, overhead allocation and activity-based costing."
+        },
+        {
+          "name": "CS 3200 / Introduction to Databases",
+          "description": "Relational database design and SQL: joins, grouping, aggregates, nested queries, correlated subqueries and self-joins."
+        },
+        {
+          "name": "FINA 2201 / Financial Management",
+          "description": "Current finance coursework"
+        },
+        {
+          "name": "BUSN 1103 / Co-op Development",
+          "description": "Co-op applications, résumé writing, behavioral and case interview preparation, and employer research."
+        },
+        {
+          "name": "GEXO 300 / Global Communication",
+          "description": "Global and intercultural communication"
+        }
+      ],
+      "completed": [
+        "DS 3000 / Foundations in Data Science",
+        "CS 4973 / Data-Driven Software",
+        "CS 2100 + 2101 / Program Design",
+        "ACCT 1201 / Financial Accounting",
+        "MATH 1231 / Business Calculus",
+        "ECON 1116 / Microeconomics",
+        "MKTG 2209 / Marketing",
+        "POLS 1155 / Comparative Politics",
+        "POLS 1150 / American Government",
+        "POLS 1160 / International Relations",
+        "POLS 3307 / Public Policy",
+        "ENGW 1111 / First-Year Writing",
+        "HONR 1102 / Honors Discovery",
+        "GE 1000 / First-Year Seminar"
+      ]
+    },
+    "common-senses": {
+      "title": "Common SENSES",
+      "category": "PYTHON / CIVIC RESEARCH",
+      "subtitle": "Research Assistant / Boston Area Research Initiative",
+      "period": "January 2026–present",
+      "intro": "I analyze Boston PM2.5 sensor readings in Python and R for BARI and Boston’s Office of Emerging Technology. I compare locations and months, check missing data and make maps.",
+      "body": {
+        "text": "DATA AND PREPARATION\nMy September 2026 source contains 1,030,999 air-quality measurements across 24 locations. I convert timestamps to Boston local time, reconcile sensor deployments with physical locations and consolidate duplicate location-minute observations.\n\nQUALITY AND COVERAGE\nI test working completeness rules, including 45 valid minutes for an hourly average and 18 valid hours for a daily average. Coverage assumptions remain subject to team review. Missing historical records and incomplete month-end coverage are tracked rather than treated as zero pollution.\n\nMATCHED HISTORICAL COMPARISON\nI compare the same 12 locations across September 2025, August 2026 and September 2026, giving each site equal weight. The matched averages were 5.15, 6.37 and 3.59 µg/m³ respectively; all 12 locations had lower September 2026 averages than in both comparison months.\n\nTIME-OF-DAY ANALYSIS\nI prepare overnight, morning, midday and evening maps, an evening-minus-midday comparison and variation-between-days figures. The time-of-day maps use arithmetic averages at 24 locations over the same 25 September dates. Hourly profiles instead use medians and interquartile bands; I keep those summaries distinct.\n\nREPRODUCIBLE OUTPUTS\nThe project includes 24 published figures, aggregate tables, runnable R scripts and R Markdown reports. The workflow rebuilds figures from checked local inputs and keeps source provenance, analysis settings and output runs separate.\n\nINTERPRETATION\nThe maps describe sensor-point measurements, rather than neighborhood-wide exposure. Boston Logan weather is contextual information. These comparisons do not establish which sources or interventions caused a change.\n\nMAP CREDIT\nThe study-boundary print shown here is adapted from Tasnim’s R map source using the supplied boundary. It is not presented as my original cartographic work.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 21,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 55,
+            "end": 64,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 97,
+            "end": 109,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 264,
+            "end": 285,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 330,
+            "end": 346,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 373,
+            "end": 387,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 574,
+            "end": 604,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 618,
+            "end": 635,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 763,
+            "end": 773,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 872,
+            "end": 893,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1209,
+            "end": 1230,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1251,
+            "end": 1271,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1464,
+            "end": 1479,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1696,
+            "end": 1707,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Python / pandas\nR / R Markdown\nPM2.5 data quality\nMatched-site analysis\nGeographic visualization",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [
+        {
+          "label": "Research repository",
+          "url": "https://github.com/httpsbina/BARI-Common-Senses"
+        },
+        {
+          "label": "Published figures",
+          "url": "https://github.com/httpsbina/BARI-Common-Senses/tree/main/figures"
+        },
+        {
+          "label": "Common SENSES project",
+          "url": "https://www.commonsensesproject.org/"
+        }
+      ],
+      "paperNote": ""
+    },
+    "advisory": {
+      "title": "AI Advisory Board",
+      "category": "LEADERSHIP",
+      "subtitle": "Member / University AI Advisory Board / DMSB curriculum work",
+      "period": "April 2026–present",
+      "intro": "I help plan student–faculty panels and DMSB curriculum discussions through the university AI Advisory Board. My work includes panel proposals and research on student–faculty discussion programs.",
+      "body": {
+        "text": "DMSB / BUSINESS-SCHOOL CURRICULUM\nWithin the university AI Advisory Board, I work on the business-school side of the professor group’s planning. We are helping plan “In the Loop” with CATLR and DMSB faculty: students and professors will work together to redesign a course assignment and discuss where AI should fit.\n\nSTUDENT–FACULTY PANEL\nI proposed three topics about classroom AI restrictions versus co-op expectations, changes to students’ majors, and transparency when professors use AI. I am helping prepare a faculty-facing panel with Dr. Laney Strange.\n\nPENPALS / PROGRAM RESEARCH\nI researched Boston College’s student–faculty PenPals format, including how questions were collected, how student responses were organized and what was still undocumented about moderation and platform access. That research informs our discussion of a similar exchange at Northeastern.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 34,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 166,
+            "end": 177,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 184,
+            "end": 189,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 317,
+            "end": 362,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 541,
+            "end": 558,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 561,
+            "end": 588,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 634,
+            "end": 641,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "DMSB curriculum planning\nPanel development\nPenPals program research\nStudent–faculty discussions",
+      "asideTitle": "IN THE WORKS",
+      "links": [
+        {
+          "label": "BC PenPals research",
+          "url": "https://cdil.bc.edu/resources/emerging-technologies/engaging-with-ai/student-ai-advisors/ai-advisors-report-2025/"
+        },
+        {
+          "label": "BC Students Talk AI",
+          "url": "https://cdil.bc.edu/resources/emerging-technologies/engaging-with-ai/student-ai-advisors/students-talk-ai/"
+        },
+        {
+          "label": "CATLR teaching resources",
+          "url": "https://learning.northeastern.edu/ai/about-the-initiative/"
+        }
+      ],
+      "paperNote": "No AI Now. AI Expert Later?\nAI Ate My Major?\nDo As I Say, Not As I Prompt?"
+    },
+    "tbca": {
+      "title": "TBCA",
+      "category": "PYTHON / SQL / MACHINE LEARNING",
+      "subtitle": "Foundations of Data Science / Northeastern",
+      "period": "May–June 2026 / Leuven, Belgium",
+      "intro": "I built two employment regressions and a funding-allocation model using Eurostat data from 27 EU countries. I wrote the prediction functions and added them to our Flask, MySQL and Streamlit app.",
+      "body": {
+        "text": "DATA ENGINEERING\nI pulled Eurostat employment by NACE sector (nama_10_a64_e) and tertiary graduates by ISCED field (educ_uoe_grad02), covering 27 EU countries from 2012 to 2023. I hand-built the ISCED–NACE crosswalk and merged the sources into a panel of approximately 2,354 rows across eight sectors.\n\nFEATURES\nI created lagged employment and year-over-year change variables, then standardized the model inputs with StandardScaler. The crosswalk made the graduate classifications usable alongside sector-level employment records.\n\nTWO EMPLOYMENT MODELS\nModel 1 predicts employment level from the prior year’s employment. Model 2 predicts year-over-year employment change from year, graduate count and lagged employment.\n\n\n\n\nTEMPORAL VALIDATION\nI replaced the random train/test split with training years 2012–2020 and holdout years 2021–2023. I recognized that the level model’s near-perfect R² was dominated by persistence in employment, rather than proof of strong forward prediction. The revised change model reached approximately R² = 0.21.\n\nFROM NOTEBOOK TO APPLICATION\nI stored coefficients, intercepts and scaler parameters in MySQL tables model1_params and model2_params. I wrote DB-backed prediction functions in labor.py and a retraining pipeline in train.py, then built a Streamlit labor dashboard with Plotly charts and a prediction widget populated from the selected country and sector.\n\nFUNDING-ALLOCATION MODEL\nIn budget.py, I combined a per-sector OLS employment trend, graduate absorption and the employment outlook into standardized demand signals. Softmax converts those signals to target budget shares, which are blended with existing allocations to produce recommendations.\n\nINTEGRATION\nI connected model outputs through Flask routes and MySQL, added budget-plan navigation and debugged database cursor and route-registration issues. The team’s Streamlit frontend communicates with the Flask REST API; the API reads and writes MySQL.\n\nBOUNDARIES OF MY CONTRIBUTION\nI owned the labor models and budget-model work described above. The university recommendation model, broader database design and other persona interfaces were shared team contributions. The funding outputs are recommendations, not government allocation decisions.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 17,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 143,
+            "end": 158,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 269,
+            "end": 274,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 303,
+            "end": 312,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 417,
+            "end": 431,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 532,
+            "end": 554,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 725,
+            "end": 745,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 804,
+            "end": 813,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 832,
+            "end": 841,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1034,
+            "end": 1043,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1046,
+            "end": 1075,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1134,
+            "end": 1139,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1401,
+            "end": 1426,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1567,
+            "end": 1574,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1696,
+            "end": 1708,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1956,
+            "end": 1986,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Python / pandas\nscikit-learn\nFlask / MySQL\nStreamlit / Plotly\nTemporal validation",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [
+        {
+          "label": "Full team repository",
+          "url": "https://github.com/CharlesTChapman/26su-TBCA-Project"
+        },
+        {
+          "label": "My contribution record",
+          "url": "https://github.com/CharlesTChapman/26su-TBCA-Project#binafsha-bakhramova"
+        },
+        {
+          "label": "Project journal",
+          "url": "https://httpsbina.github.io/26su-TBCA/bina/journal/"
+        }
+      ],
+      "paperNote": ""
+    },
+    "peak": {
+      "title": "PEAK research",
+      "category": "PYTHON / QUANTITATIVE RESEARCH",
+      "subtitle": "Computational Researcher / PEAK Summit Fellowship",
+      "period": "August 2026–present",
+      "intro": "I write Python simulations to compare Texas and North Carolina congressional maps with alternative district plans. I check the source data and test whether the Markov chains have sampled reliably.",
+      "body": {
+        "text": "CONVERGENCE\nI evaluate rank-based R-hat and bulk and tail effective sample size for multiple metrics. Starting-map groups and dispersed-start cohorts are checked separately and jointly. Checkpoints and continued-run audits keep diagnostics tied to the exact chains being interpreted.\n\nRESEARCH QUESTION\nHow unusual are enacted districting plans relative to alternative plans sampled under stated population and contiguity constraints? This is PEAK Award research at Northeastern, advised by Dr. Eric Gerber.\n\nSOURCE AND GEOGRAPHY\nI match Census population, Redistricting Data Hub election allocations and official plan assignments by block ID. I check coverage, totals, geometry, adjacency and contiguity before analyzing a plan.\n\n\n\nRECOM SAMPLING\nI run independent GerryChain ReCom Markov chains, preserving primary population bounds of ±0.1% in Texas and ±0.5% in North Carolina. Texas has 38 districts; the baseline uses 9,712 geographic units. North Carolina’s common geography retains 236,638 Census blocks within 2,681 units.\n\nCURRENT RESEARCH STATUS\nThe repository records a frozen North Carolina baseline at 23,000 states per chain, with six chains and both starting-map groups passing the primary screens. Texas continuation and dispersed-start checks are kept separate; I do not present its earlier audit as a fully converged final result.\n\nCOMPARISONS\nI compare enacted maps with ensemble distributions of seat and geographic measures, and keep election-model, constraint and geography sensitivities as separate experiments. Earlier Texas demos and reports are preserved as historical work rather than mixed into the rebuilt baseline.\n\nLIMITATIONS\nVotes are modeled allocations of presidential election results. The implemented ReCom process is not a claim of uniform sampling or full legal compliance. Tail frequencies are descriptive, and low-frequency results require adequate sampling diagnostics.\n\nREPRODUCIBILITY\nThe repository documents pinned dependencies, source validation, state-level commands, checkpoint continuation, freeze rules and generated paper tables and figures.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 12,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 34,
+            "end": 39,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 44,
+            "end": 79,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 285,
+            "end": 303,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 491,
+            "end": 506,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 509,
+            "end": 530,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 733,
+            "end": 748,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 838,
+            "end": 843,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 857,
+            "end": 862,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1033,
+            "end": 1057,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1116,
+            "end": 1139,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1146,
+            "end": 1156,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1351,
+            "end": 1363,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1647,
+            "end": 1659,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1914,
+            "end": 1930,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Python / GerryChain\nGeoPandas\nReCom / MCMC\nR-hat / bulk and tail ESS\nReproducible data audits",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [
+        {
+          "label": "Current research repository",
+          "url": "https://github.com/httpsbina/gerrymander-detector"
+        },
+        {
+          "label": "Methods and diagnostics",
+          "url": "https://github.com/httpsbina/gerrymander-detector/tree/main/docs"
+        },
+        {
+          "label": "Earlier interactive demo",
+          "url": "https://httpsbina.github.io/gerrymander-detector/"
+        }
+      ],
+      "paperNote": ""
+    },
+    "aces": {
+      "title": "ACES peer mentoring",
+      "category": "LEADERSHIP / MENTORING",
+      "subtitle": "Peer Mentor / Alliance of Civically Engaged Students",
+      "period": "July 2026–present",
+      "intro": "I mentor first-year ACES students through their weekly community service. I helped run the scavenger hunt pictured here to introduce them to the neighborhood they support.",
+      "body": {
+        "text": "PROGRAM\nThe Alliance of Civically Engaged Students is a first-year service-learning program with Boston community partners.\n\nMY ROLE\nI support students as they adjust to the program, participate in weekly service and navigate placement questions. I facilitate reflections that connect their experiences with the people and communities involved.\n\nCOMMUNITY ORIENTATION\nWe visited Farmer’s Horse during the scavenger hunt so students could get to know the neighborhood they would be supporting.\n\nONGOING RESPONSIBILITIES\nI help students stay engaged, respond to participation or placement concerns and coordinate with program stakeholders when additional support is needed.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 8,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 56,
+            "end": 91,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 125,
+            "end": 133,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 198,
+            "end": 212,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 346,
+            "end": 368,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 379,
+            "end": 393,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 494,
+            "end": 519,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "First-year mentoring\nCommunity orientation\nReflection facilitation\nService-learning support",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [
+        {
+          "label": "About the ACES program",
+          "url": "https://csce.northeastern.edu/programs/aces/"
+        }
+      ],
+      "paperNote": ""
+    },
+    "research": {
+      "title": "Research experience",
+      "category": "RESEARCH ARCHIVE",
+      "subtitle": "Independent & university research",
+      "period": "2024–present",
+      "intro": "I have worked on Boston air quality, district-map simulations, EU employment models and robotics control. Below are project descriptions and links to the code, figures and poster.",
+      "body": {
+        "text": "BARI / COMMON SENSES\nI analyze Boston PM2.5 sensor records, compare matched locations across months and build time-of-day maps and reproducible reports. The work emphasizes data completeness, geographic context and careful interpretation.\nResearch materials: github.com/httpsbina/BARI-Common-Senses\n\nPEAK / COMPUTATIONAL REDISTRICTING\nI compare Texas and North Carolina congressional plans with ReCom ensembles, combining source-data audits and geospatial validation with R-hat and effective-sample-size diagnostics. The current repository distinguishes frozen North Carolina results from Texas continuation work.\nResearch materials: github.com/httpsbina/gerrymander-detector\n\nTBCA / EU LABOR AND EDUCATION MODELS\nDuring the Belgium Dialogue, I built a crosswalk between education and industry classifications, two employment regressions and a model for recommended funding shares. I integrated those models into a Flask, MySQL and Streamlit application.\nProject materials: github.com/CharlesTChapman/26su-TBCA-Project\n\nNYU TANDON / MACHINES IN MOTION\nIn summer 2024, I compared PID, MPC and LQR control strategies for the NYU-Finger robot in PyBullet. My poster examines joint tracking, control effort and accuracy–responsiveness tradeoffs; physical-robot validation was future work.\nOpen the research poster through the link on this note.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 21,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 38,
+            "end": 43,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 259,
+            "end": 299,
+            "bold": false,
+            "href": "https://github.com/httpsbina/BARI-Common-Senses"
+          },
+          {
+            "start": 300,
+            "end": 335,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 395,
+            "end": 400,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 472,
+            "end": 477,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 634,
+            "end": 676,
+            "bold": false,
+            "href": "https://github.com/httpsbina/gerrymander-detector"
+          },
+          {
+            "start": 677,
+            "end": 714,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 811,
+            "end": 837,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 974,
+            "end": 1019,
+            "bold": false,
+            "href": "https://github.com/CharlesTChapman/26su-TBCA-Project"
+          },
+          {
+            "start": 1020,
+            "end": 1052,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1079,
+            "end": 1095,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1143,
+            "end": 1151,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Environmental data\nSimulation / diagnostics\nForecasting / validation\nRobotics control",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [
+        {
+          "label": "github.com/httpsbina/BARI-Common-Senses",
+          "url": "https://github.com/httpsbina/BARI-Common-Senses"
+        },
+        {
+          "label": "github.com/httpsbina/gerrymander-detector",
+          "url": "https://github.com/httpsbina/gerrymander-detector"
+        },
+        {
+          "label": "github.com/CharlesTChapman/26su-TBCA-Project",
+          "url": "https://github.com/CharlesTChapman/26su-TBCA-Project"
+        },
+        {
+          "label": "NYU research poster",
+          "url": "https://httpsbina.github.io/binabak/assets/projects/nyu-poster.png"
+        }
+      ],
+      "paperNote": ""
+    },
+    "forge": {
+      "title": "Forge",
+      "category": "PRODUCT / SOFTWARE DEVELOPMENT",
+      "subtitle": "Software Product Lab Member / Northeastern",
+      "period": "September 2026–present",
+      "intro": "I design screens in Figma and build account, profile, student-verification and listing features for Husky Marketplace. I also test sign-in and onboarding with the team.",
+      "body": {
+        "text": "ACCOUNT AND DEVICE VERIFICATION\nI built the account-setup flow from email verification through profile completion to Home. Profiles include a unique username, campus, school year, optional bio and photo. Username checks use the existing lower(username) database index.\n\nI also worked on remembered-browser and new-device behavior: requesting and resending codes, preserving a pending code after refresh, correcting the countdown when switching tabs, and allowing temporary errors to retry without signing the user out.\n\nHOME LISTINGS\nI connected Home to the four newest approved, available listings. The screen has separate loading, empty, error and retry states. A failed live request does not silently fall back to demo listings.\n\nPROFILE PHOTOS\nI implemented photo upload, saved-photo reload, replacement and removal, including updates to the header avatar. I reused a teammate’s compression helper and tested recovery from a failed upload.\n\nThe proposed Storage policy uses a private WebP-only bucket, a 256 KB limit, owner-only writes and verified-student reads through signed URLs. That migration is awaiting review and is not installed on shared Supabase.\n\nVALIDATION\nPR #52 records 89 passing frontend tests, 111 database assertions and 27 browser checks against a local production build and local Supabase. The checks cover signup, account setup, photo changes, incorrect codes, refresh, remembered and mobile browsers, invalid device cookies and password recovery.\n\nThe checks also include deliberate 503 responses for an upload and a device request to test recovery. TypeScript, linting, formatting and the production build pass for the branch.\n\nDESIGN AND RELEASE STATUS\nI designed mobile and desktop flows in Figma and kept the product’s existing Archivo and DM Sans typefaces during implementation. The PR includes screenshots for review.\n\nThese changes are still in review and require combined testing with the team’s other account work. Hosted signup, reset, new-device and photo checks remain part of release validation. Messaging is a later feature.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 32,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 237,
+            "end": 252,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 520,
+            "end": 534,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 558,
+            "end": 578,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 733,
+            "end": 748,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 980,
+            "end": 1004,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1008,
+            "end": 1014,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1164,
+            "end": 1175,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1190,
+            "end": 1215,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1217,
+            "end": 1240,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1245,
+            "end": 1262,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1657,
+            "end": 1683,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1872,
+            "end": 1887,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Figma / UI / UX\nSupabase Auth\nPostgreSQL / RLS\nAccount and profile flows\nTesting / product review",
+      "asideTitle": "IN THE WORKS",
+      "links": [
+        {
+          "label": "Project repository",
+          "url": "https://github.com/Forge-NU/HuskyMarketplace"
+        },
+        {
+          "label": "Account + Home / PR 52",
+          "url": "https://github.com/Forge-NU/HuskyMarketplace/pull/52"
+        }
+      ],
+      "paperNote": ""
+    },
+    "accounting": {
+      "title": "Managerial Accounting",
+      "category": "COURSEWORK / EXCEL",
+      "subtitle": "ACCT 2301 / Profit Analysis for Managers and Advisors",
+      "period": "Fall 2026 / Northeastern University",
+      "intro": "I use Excel to model how costs, volume and sales mix affect operating profit. The course also develops overhead-allocation and relevant-cost analysis for comparing business alternatives.",
+      "body": {
+        "text": "COST-VOLUME-PROFIT ANALYSIS\nI build linked Excel models for sales, variable costs, contribution margin, fixed costs and operating income. I compare break-even points, target profit and changes in sales mix using formulas and data tables.\n\nSCENARIO DESIGN\nInputs and calculated outputs are connected rather than entered as independent answers. I examine how changing price, unit volume or costs affects the result, including the assumptions behind each comparison.\n\nCOST TRACING AND ALLOCATION\nCoursework distinguishes direct from indirect costs, cost pools and appropriate cost drivers. I work with predetermined overhead rates, allocated overhead, unit manufacturing cost, cost of goods sold and ending inventory.\n\n\n\n\nACTIVITY-BASED COSTING\nI compare traditional allocation with multiple ABC activity pools, distinguishing unit-, batch-, product- and facility-level activities. The analysis examines how cost-driver choice changes apparent product costs.\n\nRELEVANT-COST DECISIONS\nI separate future differential costs from sunk and unavoidable costs when studying special orders, make-or-buy choices and equipment replacement. Opportunity costs, avoidable fixed costs and capacity conditions matter to the recommendation.\n\nRELATED COMPLETED COURSE\nACCT 1201 / Financial Accounting and Reporting introduced the statements and accounting information used to understand business performance. ACCT 2301 builds on that foundation with managerial analysis.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 28,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 43,
+            "end": 48,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 83,
+            "end": 102,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 148,
+            "end": 158,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 225,
+            "end": 236,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 239,
+            "end": 255,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 465,
+            "end": 493,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 719,
+            "end": 742,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 789,
+            "end": 792,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 957,
+            "end": 981,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1080,
+            "end": 1091,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1127,
+            "end": 1144,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1223,
+            "end": 1450,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Excel formulas\nExcel data tables\nCost-volume-profit models\nActivity-based costing\nRelevant-cost analysis",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [],
+      "paperNote": "Sales\n− variable costs\n= contribution margin\n− fixed costs\n= operating income"
+    },
+    "statistics": {
+      "title": "Business Statistics",
+      "category": "COURSEWORK / PYTHON AND EXCEL",
+      "subtitle": "MGSC 2301 / Business Statistics",
+      "period": "Fall 2026 / Northeastern University",
+      "intro": "I analyze eBay auction data to examine opening prices and bidder participation. I use Python and Excel for data preparation, descriptive statistics, visualization and correlation analysis.",
+      "body": {
+        "text": "DATA AND QUESTION\nThe eBay analysis starts with 1,953 Cartier bid records summarized into 136 auctions. I examine the relationship between the opening bid and the number of bids rather than treating every bid record as a separate auction.\n\nDATA PREPARATION\nI use Python/pandas and Excel to organize the records and create auction-level summaries. Counts and opening bids must be checked at the auction level before calculating statistics.\n\nDISTRIBUTION SUMMARIES\nFor both variables, the work includes count, mean, median, mode, minimum, maximum, range, variance, standard deviation, coefficient of variation, quartiles, IQR and the five-number summary. Skewness and kurtosis describe distribution shape.\n\n\n\n\nEXCEL METHODS\nI use the Data Analysis ToolPak and formulas including QUARTILE.EXC, STDEV.S, VAR.S, MODE.SNGL and COVARIANCE.S. I construct IQR fences at Q1 − 1.5 × IQR and Q3 + 1.5 × IQR to identify potential outliers.\n\nVISUALIZATION\nHistograms show the distributions and their skew; boxplots show quartiles, spread and flagged observations. I check histogram bins rather than relying on an automatic choice that can hide most auctions inside one interval.\n\nASSOCIATION\nThe analysis reports a correlation of approximately −0.32 between opening bid and bid count. This describes association in the observed sample, not a causal estimate of how changing a seller’s price will affect participation.\n\nREPORTING AND CHECKS\nI reconcile the auction counts, summary statistics, outlier flags and charts, then explain the results in a written report. Live formulas, consistent quartile conventions and the treatment of real high-value auctions matter to reproducibility.",
+        "size": 16,
+        "x": 222,
+        "y": 501,
+        "w": 690,
+        "runs": [
+          {
+            "start": 0,
+            "end": 18,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 48,
+            "end": 53,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 90,
+            "end": 102,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 240,
+            "end": 257,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 263,
+            "end": 276,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 440,
+            "end": 463,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 708,
+            "end": 722,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 777,
+            "end": 789,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 791,
+            "end": 798,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 800,
+            "end": 805,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 821,
+            "end": 833,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 928,
+            "end": 942,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1166,
+            "end": 1178,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1230,
+            "end": 1235,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1405,
+            "end": 1426,
+            "bold": true,
+            "href": null
+          }
+        ]
+      },
+      "aside": "Python / pandas\nExcel Analysis ToolPak\nQUARTILE.EXC / IQR\nSTDEV.S / VAR.S\nCOVARIANCE.S",
+      "asideTitle": "IN THE TOOLKIT",
+      "links": [],
+      "paperNote": "1,953 bid records\n136 auctions\n\nOpening bid\nNumber of bids"
+    }
+  },
+  "notes": {
+    "overview": {
+      "body": {
+        "text": "EDUCATION\nNortheastern University, D’Amore-McKim School of Business / May 2029\nB.S. Business Administration & Political Science; Data Science minor\nConcentrations: Business Analytics and FinTech\nGPA: 3.76 + John Martinson Honors Program\n\nEXPERIENCE\nCapital One, Incoming AEIP Analyst Intern / Summer 2027\nBoston Area Research Initiative, Research Assistant / Jan 2026–present\nForge, Sherman Center for Engineering Entrepreneurship\nSoftware Product Lab Member / Sep 2026–present\n\nSELECTED PROJECTS\nPEAK redistricting: I simulate Texas district maps and test 30,000 alternatives using exact Census-block assignments and sampling diagnostics.\nBusiness Statistics: I analyze 10,681 bids from 136 watch auctions to study opening prices and bidder participation.\nEU labor-market modeling: I built two forecasting models from 2,354 observations across 27 countries and eight sectors.\n\nLEADERSHIP\nUniversity AI Advisory Board, Student Member\nACES, Peer Mentor\n\nCO-OP AVAILABILITY\nJanuary 1–June 4, 2027 / Willing to relocate\n\nCONTACT\nbakhramova.b@northeastern.edu / 347-893-4988\nLinkedIn / GitHub",
+        "size": 17,
+        "x": 584,
+        "y": 234,
+        "w": 700,
+        "runs": [
+          {
+            "start": 0,
+            "end": 10,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 195,
+            "end": 204,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 238,
+            "end": 260,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 305,
+            "end": 336,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 376,
+            "end": 431,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 479,
+            "end": 516,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 640,
+            "end": 660,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 757,
+            "end": 782,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 878,
+            "end": 889,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 953,
+            "end": 972,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1018,
+            "end": 1026,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1026,
+            "end": 1055,
+            "bold": false,
+            "href": "mailto:bakhramova.b@northeastern.edu"
+          },
+          {
+            "start": 1058,
+            "end": 1071,
+            "bold": true,
+            "href": "tel:+13478934988"
+          },
+          {
+            "start": 1071,
+            "end": 1079,
+            "bold": false,
+            "href": "https://www.linkedin.com/in/binafsha-bakhramova/"
+          },
+          {
+            "start": 1082,
+            "end": 1088,
+            "bold": false,
+            "href": "https://github.com/httpsbina/"
+          }
+        ]
+      }
+    },
+    "research": {
+      "body": {
+        "text": "BOSTON AREA RESEARCH INITIATIVE, COMMON SENSES\nResearch Assistant / Jan 2026–present\n• Audited 1.03M PM2.5 readings across 24 Boston sensors in Python.\n• Found citywide swings explained 85.3% of variation across 716 sensor-days; flagged 34 extreme readings and 13 particle-size mismatches.\nSensor map / Research repository / Published figures\n\nPEAK SUMMIT RESEARCH FELLOWSHIP\nComputational Redistricting Researcher / Aug 2026–present\nAdvisor: Dr. Eric Gerber\n• Simulated 30,000 Texas maps across 38 districts with Python/GerryChain; reconciled 668,000+ Census blocks and 9,700+ precinct units.\n• Found 8 Harris-won districts in the 2025 plan versus 9–17 in simulations; checked 29,301 unique plans for sampling stability and reproducibility.\nLive demo / Research code / Methods & diagnostics\n\nEBAY AUCTION PRICING ANALYSIS\nBusiness Statistics / Sep 2026–present\n• Analyzed 10,681 bids across 136 watch auctions in Python/pandas. Higher opening prices received fewer bids (r = −0.32).\n• Built a 3-sheet Excel workbook with formulas, source records and pricing methods.\n\nEU LABOR-MARKET MODELING\nNortheastern, Leuven, Belgium / May–Jun 2026\n• Built two forecasting models from 2,354 Eurostat observations across 27 countries and 8 sectors; corrected time leakage with a 2021–23 holdout.\n• Built a Flask/MySQL dashboard and modeled workforce-based funding scenarios.\nLive site / Project journal / My repository / Team repository",
+        "x": 640,
+        "y": 282,
+        "w": 700,
+        "runs": [
+          {
+            "start": 0,
+            "end": 47,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 95,
+            "end": 100,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 186,
+            "end": 191,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 290,
+            "end": 300,
+            "bold": false,
+            "href": "https://github.com/httpsbina/binabak/blob/main/assets/common-senses/live-map.html"
+          },
+          {
+            "start": 303,
+            "end": 322,
+            "bold": false,
+            "href": "https://github.com/httpsbina/BARI-Common-Senses"
+          },
+          {
+            "start": 325,
+            "end": 343,
+            "bold": false,
+            "href": "https://github.com/httpsbina/BARI-Common-Senses/tree/main/figures"
+          },
+          {
+            "start": 344,
+            "end": 376,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 471,
+            "end": 477,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 544,
+            "end": 552,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 571,
+            "end": 577,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 678,
+            "end": 684,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 742,
+            "end": 751,
+            "bold": false,
+            "href": "https://httpsbina.github.io/gerrymander-detector/"
+          },
+          {
+            "start": 754,
+            "end": 767,
+            "bold": false,
+            "href": "https://github.com/httpsbina/gerrymander-detector"
+          },
+          {
+            "start": 770,
+            "end": 792,
+            "bold": false,
+            "href": "https://github.com/httpsbina/gerrymander-detector/tree/main/docs"
+          },
+          {
+            "start": 793,
+            "end": 823,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 873,
+            "end": 879,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 892,
+            "end": 895,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1069,
+            "end": 1094,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 1364,
+            "end": 1373,
+            "bold": false,
+            "href": "https://tbcacademics.neu-in-leuven.cloud/"
+          },
+          {
+            "start": 1376,
+            "end": 1391,
+            "bold": false,
+            "href": "https://httpsbina.github.io/26su-TBCA/bina/journal/"
+          },
+          {
+            "start": 1394,
+            "end": 1407,
+            "bold": false,
+            "href": "https://github.com/httpsbina/26su-TBCA"
+          },
+          {
+            "start": 1410,
+            "end": 1425,
+            "bold": false,
+            "href": "https://github.com/CharlesTChapman/26su-TBCA-Project"
+          }
+        ]
+      }
+    },
+    "product": {
+      "body": {
+        "text": "FORGE, HUSKY MARKETPLACE\nSoftware Product Lab Member / Sep 2026–present\nSherman Center for Engineering Entrepreneurship, Northeastern\n\nPRODUCT DESIGN\n• Designed searchable listings, saved items and moving-help flows in Figma; translated user journeys into beta requirements.\n• Defined a campus-only beta with verified sellers, direct transactions and opt-in moving help to balance trust and launch speed.\n\nBUSINESS ANALYSIS\n• Modeled potential seven-figure annual sales and 15–20% transaction-fee scenarios to assess revenue potential and feasibility.\n• Evaluated revenue scenarios rather than reporting realized marketplace sales.\n\nDEVELOPMENT\n• Built Supabase/PostgreSQL email verification and SQL row-level security to restrict access to university students.\n• Built account, profile, student-verification and listing flows, including sign-in and onboarding checks with the team.\n\nPROJECT LINKS\nFigma prototype / Team repository\nHusky Marketplace repository / Account + Home pull request",
+        "x": 640,
+        "y": 282,
+        "w": 700,
+        "runs": [
+          {
+            "start": 0,
+            "end": 25,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 72,
+            "end": 119,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 135,
+            "end": 150,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 406,
+            "end": 424,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 474,
+            "end": 480,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 633,
+            "end": 645,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 696,
+            "end": 718,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 884,
+            "end": 898,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 898,
+            "end": 913,
+            "bold": false,
+            "href": "https://www.figma.com/design/maLPrdzL4LrQCWIlZpBbME/Husky-Marketplace-%E2%80%94-Fresh-Visual-Direction"
+          },
+          {
+            "start": 916,
+            "end": 932,
+            "bold": false,
+            "href": "https://github.com/Forge-NU/software-team-3"
+          },
+          {
+            "start": 932,
+            "end": 960,
+            "bold": false,
+            "href": "https://github.com/Forge-NU/HuskyMarketplace"
+          },
+          {
+            "start": 963,
+            "end": 990,
+            "bold": false,
+            "href": "https://github.com/Forge-NU/HuskyMarketplace/pull/52"
+          }
+        ]
+      }
+    },
+    "leadership": {
+      "body": {
+        "text": "NORTHEASTERN UNIVERSITY AI ADVISORY BOARD\nStudent Member / Apr 2026–present\n• Advise leaders on AI policy and classroom adoption, representing student needs across nine colleges.\n• Developed a three-theme faculty–student panel proposal on classroom policy, AI skills and co-op preparedness; contribute to DMSB curriculum discussions.\n\nALLIANCE OF CIVICALLY ENGAGED STUDENTS\nPeer Mentor / Jul 2026–present\n• Co-mentor first-year students through community placements, office hours, reflection and one-to-one check-ins.\n• Helped run a neighborhood scavenger hunt, including Farmer’s Horse, to introduce students to the area they support.\n\nACCELERATE PRE-COLLEGE PROGRAMS\nStudent Life Ambassador (SLA) / 2026\n• Mentored 100+ first-time attendees in a 600-student pre-college program and helped run community events.\n\nEVH HALL COUNCIL\nVice President, Budget / Feb–Apr 2026\n• Tracked a $7,500 budget, monitored spending against plan and prepared financial documentation for review and approval.",
+        "x": 640,
+        "y": 282,
+        "w": 700,
+        "runs": [
+          {
+            "start": 0,
+            "end": 42,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 335,
+            "end": 374,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 637,
+            "end": 669,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 717,
+            "end": 721,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 748,
+            "end": 759,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 814,
+            "end": 831,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 881,
+            "end": 887,
+            "bold": true,
+            "href": null
+          }
+        ]
+      }
+    },
+    "education": {
+      "body": {
+        "text": "EDUCATION\nB.S. Business Administration & Political Science / May 2029\nMinor in Data Science\nConcentrations: Business Analytics and FinTech\n\nACADEMIC RECORD\nGPA: 3.76 + John Martinson Honors Program\nAmelia Peabody Scholarship\nDean’s List\n\nRELEVANT COURSEWORK\nBusiness Statistics / pricing analysis, Excel and Python/pandas\nFinancial Accounting & Reporting / statements and business decisions\nFinancial Management\nDatabase Design / relational models, joins and SQL",
+        "size": 17,
+        "x": 640,
+        "y": 282,
+        "w": 700,
+        "runs": [
+          {
+            "start": 0,
+            "end": 10,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 140,
+            "end": 165,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 238,
+            "end": 258,
+            "bold": true,
+            "href": null
+          }
+        ]
+      }
+    },
+    "skills": {
+      "body": {
+        "text": "BUSINESS ANALYTICS\n• Excel: PivotTables, formulas, reporting, data tables and scenario models.\n• Pricing analysis: auction bids, opening-price strategy and participation.\n• Forecasting and model validation: country–sector employment forecasts, time-based holdouts and leakage checks.\n• Data quality: sensor coverage, device records, outliers and consistency checks.\n\nLANGUAGES & DATA TOOLS\nPython: pandas, NumPy, scikit-learn\nSQL: MySQL, PostgreSQL\nR; JavaScript; Leaflet\nGit and GitHub\n\nPRODUCT & DEVELOPMENT\nFigma: interface design and user flows\nSupabase: email verification and SQL row-level security\nFlask, Streamlit and Plotly\n\nMETHODS\nMarkov chain Monte Carlo simulation and sampling diagnostics\nFixed-effects modeling, geospatial analysis and time-series validation\n\nINTERESTS\nStreet and travel photography\nVinyl collecting and pop music\nPuzzles and Russian language",
+        "size": 17,
+        "x": 640,
+        "y": 282,
+        "w": 700,
+        "runs": [
+          {
+            "start": 0,
+            "end": 19,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 28,
+            "end": 39,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 367,
+            "end": 390,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 488,
+            "end": 510,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 582,
+            "end": 605,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 634,
+            "end": 642,
+            "bold": true,
+            "href": null
+          },
+          {
+            "start": 775,
+            "end": 785,
+            "bold": true,
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  "emails": [
+    {
+      "id": "194:1617",
+      "subject": "Hi! Looking to connect?",
+      "body": "Hi!\n\nLooking to connect? Send me a note, whether it’s about work, something you saw here, or just to say hello.\n\nI’d love to hear what you’re working on.",
+      "sender": "Binafsha Bakhramova",
+      "context": "bakhramova.b@northeastern.edu",
+      "recipient": "To: You",
+      "signature": true,
+      "date": "November 18, 2026 at 1:10 PM"
+    },
+    {
+      "id": "194:1772",
+      "subject": "Sensor-network map",
+      "body": "Hey Bina,\n\nHere’s the sensor-network map with the street labels and sensor locations.\n\nLet me know what you think!\n\nTasnim",
+      "sender": "Tasnim",
+      "context": "Common SENSES",
+      "recipient": "To: Binafsha",
+      "signature": false,
+      "date": "November 18, 2026 at 12:42 PM"
+    },
+    {
+      "id": "194:1927",
+      "subject": "September plots / quick update",
+      "body": "Hey Tasnim,\n\nHere are the monthly plots. I’m checking the sensor coverage before I settle on the September comparison.\n\nLet me know if anything looks off!",
+      "sender": "Binafsha Bakhramova",
+      "context": "bakhramova.b@northeastern.edu",
+      "recipient": "To: Tasnim",
+      "signature": true,
+      "date": "November 18, 2026 at 11:18 AM"
+    },
+    {
+      "id": "194:2082",
+      "subject": "For our next meeting",
+      "body": "Hi Bina,\n\nI’ve attached the plots for our next meeting. Let’s go through the convergence checks together before deciding whether to run more samples.\n\nThanks,\nEric",
+      "sender": "Dr. Eric Gerber",
+      "context": "PEAK research",
+      "recipient": "To: Binafsha",
+      "signature": false,
+      "date": "November 17, 2026 at 4:06 PM"
+    },
+    {
+      "id": "199:2008",
+      "subject": "A couple of UI questions",
+      "body": "Hey everyone,\n\nI have a couple of UI questions about sign-in and posting a listing. I’m adding them to our meeting notes so we don’t forget to go over them.\n\nA second set of eyes would help, especially on the first-time sign-in screens. Thanks!",
+      "sender": "Binafsha Bakhramova",
+      "context": "bakhramova.b@northeastern.edu",
+      "recipient": "To: Forge team",
+      "signature": true,
+      "date": "November 17, 2026 at 2:23 PM"
+    },
+    {
+      "id": "199:2191",
+      "subject": "Models / demo run-through",
+      "body": "Hey Bina,\n\nLet’s do a quick run-through before the demo. I’ll take the university recommendations and you can take the labor forecasts.\n\nWould be nice to catch any weird bits before we’re presenting!\n\nAlyssa",
+      "sender": "Alyssa Haidar",
+      "context": "TBCA",
+      "recipient": "To: Binafsha",
+      "signature": false,
+      "date": "June 12, 2026 at 10:08 AM"
+    },
+    {
+      "id": "199:2374",
+      "subject": "Loved the scavenger hunt",
+      "body": "Hey Bina,\n\nFound the Farmer’s Horse photo! That was a fun afternoon.\n\nThanks for helping with the scavenger hunt!\n\nDev",
+      "sender": "Dev",
+      "context": "ACES",
+      "recipient": "To: Binafsha",
+      "signature": false,
+      "date": "September 24, 2026 at 3:12 PM"
+    },
+    {
+      "id": "199:2557",
+      "subject": "Panel ideas / a first pass",
+      "body": "Hi Erika,\n\nI’m putting together a first pass at the panel ideas. I’ll send the notes before our next meeting so you have a chance to look through them.\n\nStill narrowing the list down, but I’d love to hear which ones you think would get people talking!",
+      "sender": "Binafsha Bakhramova",
+      "context": "bakhramova.b@northeastern.edu",
+      "recipient": "To: Erika Von Kirchbach",
+      "signature": true,
+      "date": "November 17, 2026 at 10:36 AM"
+    },
+    {
+      "id": "209:2793",
+      "subject": "PR review",
+      "body": "Hey Bina,\n\nGot the PR, thanks! I’m looking through the account setup changes. Flag anything you’d like me to check first.\n\nJayden",
+      "sender": "Jayden",
+      "context": "Forge",
+      "recipient": "To: Binafsha",
+      "signature": false,
+      "date": "November 16, 2026 at 5:07 PM"
+    }
+  ]
+}
